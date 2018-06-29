@@ -1,0 +1,292 @@
+title: "Managing merge conflicts"
+tagline: "Your interactive guide to resolving merge conflicts"
+description: "It’s common for developers to merge conflicting changes to the same file on GitHub—or produce what is commonly called a “merge conflict”. While merge conflicts might sound scary, this course gives you the skills you need to resolve them with ease."
+template:
+  name: "merge-conflict"
+  url: "https://github.com/githubtraining/merge-conflict-template-repo.git"
+tags: [
+  "Git","Merge conflicts"
+]
+before:
+  - type: updateBranchProtection
+  - type: createPullRequest
+    title: "Second merge: Let's try a conflict"
+    body: 02b_PR-OP.md
+    head: update-config
+  - type: createPullRequest
+    title: "Another User's Change"
+    body: 03_PR-conflict.md
+    head: education-conflict
+  - type: createPullRequest
+    title: "Create your own Conflict"
+    body: 03b_PR-OP.md
+    head: add-education
+  - type: createPullRequest
+    title: Advanced Conflicts
+    body: 04b_PR-OP.md
+    head: add-experience
+  - type: createIssue
+    title: Welcome
+    body: 01b_introduction-issue.md
+steps:
+  - title: "Create a pull request"
+    description: "Create a completely normal pull request to update the `_data/skills.yml` file"
+    event: "pull_request.opened"
+    link: https://github.com/{{ user.username }}/{{ course.template.name }}/issues/5
+    actions:
+      - type: gate
+        gates:
+          - left: '%payload.pull_request.head.ref%'
+            operator: '!=='
+            right: 'update-config'
+          - left: '%payload.pull_request.head.ref%'
+            operator: '!=='
+            right: 'education-conflict'
+          - left: '%payload.pull_request.head.ref%'
+            operator: '!=='
+            right: 'add-education'
+          - left: '%payload.pull_request.head.ref%'
+            operator: '!=='
+            right: 'add-experience'
+      - type: getPullRequest
+      - type: gate
+        left: '%actions[1].data.mergeable%'
+        else:
+          type: respond
+          with: e_unexpected-conflict.md
+      - type: getTree
+        sha: '%payload.pull_request.head.ref%'
+      - type: gate
+        left: '%actions[2].data.tree%'
+        operator: includes
+        right: 'filename:_data/skills.yml'
+      - type: respond
+        issue: 1
+        with: 01d_go-to-pr.md
+        data:
+          url: '%payload.pull_request.html_url%'
+      - type: createReview
+        body: 01c_PR-OP.md
+        event: 'APPROVE'
+        data:
+          branch: '%payload.pull_request.head.ref%'
+        
+  - title: "Merge the pull request"
+    description: "Merge your completely normal pull request"
+    event: "pull_request.closed"
+    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/6
+    actions:
+      - type: gate
+        gates:
+          - left: '%payload.pull_request.head.ref%'
+            operator: '!=='
+            right: 'update-config'
+          - left: '%payload.pull_request.head.ref%'
+            operator: '!=='
+            right: 'education-conflict'
+          - left: '%payload.pull_request.head.ref%'
+            operator: '!=='
+            right: 'add-education'
+          - left: '%payload.pull_request.head.ref%'
+            operator: '!=='
+            right: 'add-experience'
+        else:
+          type: respond
+          with: e_error.md
+      - type: getPullRequest
+      - type: gate
+        left: '%actions[1].data.mergeable%'
+      - type: closeIssue
+        issue: 1
+      - type: removeBranchProtection
+      - type: respond
+        with: 01c_resolution-success.md
+        data:
+          url: '%actions[5].data.html_url%'
+  
+  - title: "Resolve a simple conflict"
+    description: "Resolve your first merge conflict"
+    event: "pull_request.synchronize"
+    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/1
+    actions:
+      - type: getPullRequest
+      - type: gate
+        left: '%actions[0].data.mergeable%'
+        else:
+          type: respond
+          with: e_error.md
+      - type: respond
+        with: 02c_resolution-success.md
+
+  - title: "Merge the first resolved pull request"
+    description: "Merge the pull request that holds your first, simple conflict"
+    event: "pull_request.closed"
+    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/1
+    actions:
+      - type: gate
+        left: '%payload.pull_request.head.ref%'
+        operator: '==='
+        right: update-config
+        else:
+          type: respond
+          with: e_error.md
+      - type: updateBranchProtection
+      - type: respond
+        with: 02e_after-merge-and-delete.md
+
+  - title: "Create your own conflict"
+    description: "Commit changes to the `_data/education.yml` file on the `add-education` branch in the 'Create Your Own Conflict' Pull Request"
+    event: "pull_request.synchronize"
+    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/3
+    actions:
+      - type: gate
+        left: '%payload.pull_request.head.ref%'
+        operator: '==='
+        right: add-education
+        else:
+          type: respond
+          with: e_error.md
+      - type: getPullRequest
+      - type: gate
+        left: '%actions[1].data.mergeable%'
+        else:
+          type: respond
+          with: e_error.md
+      - type: updateBranchProtection
+      - type: respond
+        with: 03c_first-comment-success.md
+        issue: "Another User's Change"
+
+  - title: "Conflicting change"
+    description: "Approve the other pull request with changes to the `_data/education.yml` file."
+    event: "pull_request_review.submitted"
+    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/2
+    actions:
+      - type: gate
+        left: '%payload.pull_request.head.ref%'
+        operator: '==='
+        right: education-conflict
+        else:
+          type: respond
+          with: e_error.md
+      - type: updateBranchProtection
+      - type: gates
+        left: '%payload.review.state%'
+        operator: '==='
+        right: 'approved'
+        else:
+          type: respond
+          with: e_didnt-approve.md
+          issue: '%payload.pull_request.number%'
+      - type: mergePullRequest
+      - type: getPullRequest
+        pullRequest: 3
+      - type: respond
+        with: 04_bot-merged.md
+        data:
+          otherPR: '%actions[4].data.html_url%'
+
+  - title: "Resolve conflicts you created"
+    description: "Resolve the conflict in the 'Create Your Own Conflict' pull request"
+    event: "pull_request.synchronize"
+    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/3
+    actions:
+      - type: gate
+        left: '%payload.pull_request.head.ref%'
+        operator: '==='
+        right: add-education
+        else:
+          type: respond
+          with: e_error.md
+      - type: getPullRequest
+      - type: gate
+        left: '%actions[1].data.mergeable%'
+        else:
+          type: respond
+          with: e_error.md
+      - type: respond
+        with: 03c_PR-free-of-conflicts.md
+
+  - title: "Merge the third pull request"
+    description: "Merge the 'Create Your Own Conflict' pull request"
+    event: "pull_request.closed"
+    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/3
+    actions:
+      - type: gate
+        left: '%payload.pull_request.head.ref%'
+        operator: '==='
+        right: add-education
+        else:
+          type: respond
+          with: e_error.md
+      - type: gate
+        left: '%payload.pull_request.merged%'
+      - type: closeIssue
+        issue: Final merge conflict
+      - type: getPullRequest
+        pullRequest: 4
+      - type: respond
+        with: 03e_congrats.md
+        data:
+          url: '%actions[3].data.html_url%'
+
+  - title: "Resolve conflicts in the Advanced Conflicts pull request"
+    description: "Resolve the merge conflict in the 'Advanced Conflicts' pull request"
+    event: "pull_request.synchronize"
+    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/4
+    actions:
+      - type: gate
+        left: '%payload.pull_request.head.ref%'
+        operator: '==='
+        right: add-experience
+        else:
+          type: respond
+          with: e_error.md
+      - type: getPullRequest
+      - type: respond
+        with: 04c_PR-free-of-conflicts.md
+
+  - title: "Merge fourth pull request"
+    description: "Merge the 'Advanced Conflicts' pull request"
+    event: "pull_request.closed"
+    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/4
+    actions:
+      - type: gate
+        left: '%payload.pull_request.head.ref%'
+        operator: '==='
+        right: add-experience
+        else:
+          type: respond
+          with: e_error.md
+      - type: gate
+        left: '%payload.pull_request.merged%'
+      - type: closeIssue
+        issue: Next merge conflict
+      - type: createIssue
+        title: Enable GitHub Pages
+        body: 05b_issue-OP.md
+      - type: respond
+        with: 04e_congrats.md
+        data:
+          url: '%actions[3].data.html_url%'
+
+  - title: "Enable GitHub Pages"
+    description: "Enable GitHub Pages on your repository"
+    event: "deployment"
+    link: https://github.com/{{ user.username }}/{{ course.template.name }}/issues/7
+    actions:
+      - type: closeIssue
+        issue: Enable GitHub Pages
+      - type: createIssue
+        title: More optional changes
+        body: 06x_issue-OP.md
+      - type: createIssue
+        title: 'Optional: Change picture'
+        body: 06y_issue-OP.md
+      - type: respond
+        with: 05e_next-steps.md
+        issue: Enable GitHub Pages
+        data:
+          issue1: '%actions[1].data.html_url%'
+          issue2: '%actions[2].data.html_url%'
+order: 5

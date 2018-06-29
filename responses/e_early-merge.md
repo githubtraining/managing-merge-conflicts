@@ -1,0 +1,3 @@
+Uh oh! You merged the pull request before we were done. I'm going to make a few tweaks to change this pull request back to the state before the merge. Then, you can continue with the instructions I posted earlier in this pull request.
+
+If you would like assistance troubleshooting the issue you are encountering, create a post on the [GitHub Community]({{ communityBoard }}) board. You might also want to search for your issue to see if other people have resolved it in the past.
