@@ -1,12 +1,12 @@
-title: "Managing merge conflicts"
-tagline: "Your interactive guide to resolving merge conflicts"
-description: "It’s common for developers to merge conflicting changes to the same file on GitHub—or produce what is commonly called a “merge conflict”. While merge conflicts might sound scary, this course gives you the skills you need to resolve them with ease."
+title: Managing merge conflicts
+tagline: Your interactive guide to resolving merge conflicts
+description: It’s common for developers to merge conflicting changes to the same file on GitHub—or produce what is commonly called a “merge conflict”. While merge conflicts might sound scary, this course gives you the skills you need to resolve them with ease.
 template:
-  name: "merge-conflict"
-  url: "https://github.com/githubtraining/merge-conflict-template-repo.git"
-tags: [
-  "Git","Merge conflicts"
-]
+  name: merge-conflict
+  url: https://github.com/githubtraining/merge-conflict-template-repo.git
+tags:
+  - Git
+  - Merge conflicts
 before:
   - type: updateBranchProtection
   - type: createPullRequest
@@ -18,7 +18,7 @@ before:
     body: 03_PR-conflict.md
     head: education-conflict
   - type: createPullRequest
-    title: "Create your own Conflict"
+    title: Create your own Conflict
     body: 03b_PR-OP.md
     head: add-education
   - type: createPullRequest
@@ -29,9 +29,9 @@ before:
     title: Welcome
     body: 01b_introduction-issue.md
 steps:
-  - title: "Create a pull request"
-    description: "Create a completely normal pull request to update the `_data/skills.yml` file"
-    event: "pull_request.opened"
+  - title: Create a pull request
+    description: Create a completely normal pull request to update the `_data/skills.yml` file
+    event: pull_request.opened
     link: https://github.com/{{ user.username }}/{{ course.template.name }}/issues/5
     actions:
       - type: gate
@@ -49,15 +49,18 @@ steps:
             operator: '!=='
             right: 'add-experience'
       - type: getPullRequest
+        action_id: pr
+        waitForMergeable: true
       - type: gate
-        left: '%actions[1].data.mergeable%'
+        left: '%actions.pr.data.mergeable%'
         else:
           type: respond
           with: e_unexpected-conflict.md
       - type: getTree
+        action_id: tree
         sha: '%payload.pull_request.head.ref%'
       - type: gate
-        left: '%actions[2].data.tree%'
+        left: '%actions.tree.data.tree%'
         operator: includes
         right: 'filename:_data/skills.yml'
       - type: respond
@@ -71,9 +74,9 @@ steps:
         data:
           branch: '%payload.pull_request.head.ref%'
         
-  - title: "Merge the pull request"
-    description: "Merge your completely normal pull request"
-    event: "pull_request.closed"
+  - title: Merge the pull request
+    description: Merge your completely normal pull request
+    event: pull_request.closed
     link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/6
     actions:
       - type: gate
@@ -94,33 +97,40 @@ steps:
           type: respond
           with: e_error.md
       - type: getPullRequest
+        waitForMergeable: true
+        action_id: pr
       - type: gate
-        left: '%actions[1].data.mergeable%'
+        left: '%actions.pr.data.mergeable%'
       - type: closeIssue
         issue: 1
       - type: removeBranchProtection
+      - type: getPullRequest
+        action_id: new_pr
+        pullRequest: 'Second merge: Let's try a conflict'
       - type: respond
         with: 01c_resolution-success.md
         data:
-          url: '%actions[5].data.html_url%'
+          url: '%actions.new_pr.data.html_url%'
   
-  - title: "Resolve a simple conflict"
-    description: "Resolve your first merge conflict"
-    event: "pull_request.synchronize"
+  - title: Resolve a simple conflict
+    description: Resolve your first merge conflict
+    event: pull_request.synchronize
     link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/1
     actions:
       - type: getPullRequest
+        waitForMergeable: true
+        action_id: pr
       - type: gate
-        left: '%actions[0].data.mergeable%'
+        left: '%actions.pr.data.mergeable%'
         else:
           type: respond
           with: e_error.md
       - type: respond
         with: 02c_resolution-success.md
 
-  - title: "Merge the first resolved pull request"
-    description: "Merge the pull request that holds your first, simple conflict"
-    event: "pull_request.closed"
+  - title: Merge the first resolved pull request
+    description: Merge the pull request that holds your first, simple conflict
+    event: pull_request.closed
     link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/1
     actions:
       - type: gate
@@ -134,9 +144,9 @@ steps:
       - type: respond
         with: 02e_after-merge-and-delete.md
 
-  - title: "Create your own conflict"
-    description: "Commit changes to the `_data/education.yml` file on the `add-education` branch in the 'Create Your Own Conflict' Pull Request"
-    event: "pull_request.synchronize"
+  - title: Create your own conflict
+    description: Commit changes to the `_data/education.yml` file on the `add-education` branch in the 'Create Your Own Conflict' Pull Request
+    event: pull_request.synchronize
     link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/3
     actions:
       - type: gate
@@ -147,8 +157,10 @@ steps:
           type: respond
           with: e_error.md
       - type: getPullRequest
+        waitForMergeable: true
+        action_id: pr
       - type: gate
-        left: '%actions[1].data.mergeable%'
+        left: '%actions.pr.data.mergeable%'
         else:
           type: respond
           with: e_error.md
@@ -157,9 +169,9 @@ steps:
         with: 03c_first-comment-success.md
         issue: "Another User's Change"
 
-  - title: "Conflicting change"
-    description: "Approve the other pull request with changes to the `_data/education.yml` file."
-    event: "pull_request_review.submitted"
+  - title: Conflicting change
+    description: Approve the other pull request with changes to the `_data/education.yml` file.
+    event: pull_request_review.submitted
     link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/2
     actions:
       - type: gate
@@ -180,15 +192,16 @@ steps:
           issue: '%payload.pull_request.number%'
       - type: mergePullRequest
       - type: getPullRequest
-        pullRequest: 3
+        action_id: pr
+        pullRequest: '%payload.pull_request.number%'
       - type: respond
         with: 04_bot-merged.md
         data:
-          otherPR: '%actions[4].data.html_url%'
+          otherPR: '%actions.pr.data.html_url%'
 
-  - title: "Resolve conflicts you created"
-    description: "Resolve the conflict in the 'Create Your Own Conflict' pull request"
-    event: "pull_request.synchronize"
+  - title: Resolve conflicts you created
+    description: Resolve the conflict in the 'Create Your Own Conflict' pull request
+    event: pull_request.synchronize
     link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/3
     actions:
       - type: gate
@@ -199,17 +212,19 @@ steps:
           type: respond
           with: e_error.md
       - type: getPullRequest
+        waitForMergeable: true
+        action_id: pr
       - type: gate
-        left: '%actions[1].data.mergeable%'
+        left: '%actions.pr.data.mergeable%'
         else:
           type: respond
           with: e_error.md
       - type: respond
         with: 03c_PR-free-of-conflicts.md
 
-  - title: "Merge the third pull request"
-    description: "Merge the 'Create Your Own Conflict' pull request"
-    event: "pull_request.closed"
+  - title: Merge the third pull request
+    description: Merge the 'Create Your Own Conflict' pull request
+    event: pull_request.closed
     link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/3
     actions:
       - type: gate
@@ -224,15 +239,17 @@ steps:
       - type: closeIssue
         issue: Final merge conflict
       - type: getPullRequest
-        pullRequest: 4
+        waitForMergeable: true
+        action_id: pr
+        pullRequest: '%payload.pull_request.number%'
       - type: respond
         with: 03e_congrats.md
         data:
-          url: '%actions[3].data.html_url%'
+          url: '%actions.pr.data.html_url%'
 
-  - title: "Resolve conflicts in the Advanced Conflicts pull request"
-    description: "Resolve the merge conflict in the 'Advanced Conflicts' pull request"
-    event: "pull_request.synchronize"
+  - title: Resolve conflicts in the Advanced Conflicts pull request
+    description: Resolve the merge conflict in the 'Advanced Conflicts' pull request
+    event: pull_request.synchronize
     link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/4
     actions:
       - type: gate
@@ -246,9 +263,9 @@ steps:
       - type: respond
         with: 04c_PR-free-of-conflicts.md
 
-  - title: "Merge fourth pull request"
-    description: "Merge the 'Advanced Conflicts' pull request"
-    event: "pull_request.closed"
+  - title: Merge fourth pull request
+    description: Merge the 'Advanced Conflicts' pull request
+    event: pull_request.closed
     link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/4
     actions:
       - type: gate
@@ -262,17 +279,18 @@ steps:
         left: '%payload.pull_request.merged%'
       - type: closeIssue
         issue: Next merge conflict
-      - type: createIssue
+      - type: createIssuea
+        action_id: issue
         title: Enable GitHub Pages
         body: 05b_issue-OP.md
       - type: respond
         with: 04e_congrats.md
         data:
-          url: '%actions[3].data.html_url%'
+          url: '%actions.issue.data.html_url%'
 
-  - title: "Enable GitHub Pages"
-    description: "Enable GitHub Pages on your repository"
-    event: "deployment"
+  - title: Enable GitHub Pages
+    description: Enable GitHub Pages on your repository
+    event: deployment
     link: https://github.com/{{ user.username }}/{{ course.template.name }}/issues/7
     actions:
       - type: closeIssue
@@ -280,13 +298,15 @@ steps:
       - type: createIssue
         title: More optional changes
         body: 06x_issue-OP.md
+        action_id: more_changes
       - type: createIssue
         title: 'Optional: Change picture'
         body: 06y_issue-OP.md
+        action_id: change_pic
       - type: respond
         with: 05e_next-steps.md
         issue: Enable GitHub Pages
         data:
-          issue1: '%actions[1].data.html_url%'
-          issue2: '%actions[2].data.html_url%'
+          issue1: '%actions.more_changes.data.html_url%'
+          issue2: '%actions.change_pic.data.html_url%'
 order: 5
