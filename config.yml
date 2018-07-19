@@ -59,10 +59,11 @@ steps:
       - type: getTree
         action_id: tree
         sha: '%payload.pull_request.head.ref%'
+        recursive: true
       - type: gate
         left: '%actions.tree.data.tree%'
         operator: includes
-        right: 'filename:_data/skills.yml'
+        right: 'path:_data/skills.yml'
       - type: respond
         issue: 1
         with: 01d_go-to-pr.md
