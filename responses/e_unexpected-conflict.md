@@ -1,5 +1,3 @@
-user created an unexpected merge conflict - instructions to fix that problem
-
 Uh oh, it would appear that in your excitement to complete this activity you accidentally created a merge conflict outside of the class activity. I'm just going to consider this an opportunity for you to have some extra practice handling merge conflicts :grinning:. 
 
 To resolve this merge conflict, I'm going to reference the following example:
