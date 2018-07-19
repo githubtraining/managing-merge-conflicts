@@ -106,7 +106,7 @@ steps:
       - type: removeBranchProtection
       - type: getPullRequest
         action_id: new_pr
-        pullRequest: 'Second merge: Let's try a conflict'
+        pullRequest: "Second merge: Let's try a conflict"
       - type: respond
         with: 01c_resolution-success.md
         data:
