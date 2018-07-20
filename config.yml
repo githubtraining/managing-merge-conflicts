@@ -8,6 +8,9 @@ tags:
   - Git
   - Merge conflicts
 before:
+  - type: createIssue
+    title: Welcome
+    body: 01b_introduction-issue.md
   - type: updateBranchProtection
   - type: createPullRequest
     title: "Second merge: Let's try a conflict"
@@ -25,9 +28,6 @@ before:
     title: Advanced Conflicts
     body: 04b_PR-OP.md
     head: add-experience
-  - type: createIssue
-    title: Welcome
-    body: 01b_introduction-issue.md
 steps:
   - title: Create a pull request
     description: Create a completely normal pull request to update the `_data/skills.yml` file
