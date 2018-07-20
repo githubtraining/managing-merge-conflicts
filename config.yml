@@ -120,9 +120,9 @@ steps:
         else:
           type: respond
           with: e_error.md
-      - type: createReview
-        event: APPROVE
-        body: 02c_resolution-success.md
+      - type: removeBranchProtection
+      - type: respond
+        with: 02c_resolution-success.md
 
   - title: Merge the first resolved pull request
     description: Merge the pull request that holds your first, simple conflict
@@ -163,7 +163,6 @@ steps:
         else:
           type: respond
           with: e_error.md
-      - type: updateBranchProtection
       - type: respond
         with: 03c_first-comment-success.md
         issue: "Another User's Change"
