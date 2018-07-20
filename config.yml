@@ -120,8 +120,9 @@ steps:
         else:
           type: respond
           with: e_error.md
-      - type: respond
-        with: 02c_resolution-success.md
+      - type: createReview
+        event: APPROVE
+        body: 02c_resolution-success.md
 
   - title: Merge the first resolved pull request
     description: Merge the pull request that holds your first, simple conflict
@@ -135,9 +136,12 @@ steps:
         else:
           type: respond
           with: e_error.md
-      - type: createReview
-        event: APPROVED
-        body: 02e_after-merge-and-delete.md
+      - type: getPullRequest
+        pullRequest: Create your own Conflict
+      - type: respond
+        with: 02e_after-merge-and-delete.md
+        data:
+          url: '%actions.next_pr.data.html_url%'
 
   - title: Create your own conflict
     description: Commit changes to the `_data/education.yml` file on the `add-education` branch in the 'Create Your Own Conflict' Pull Request
