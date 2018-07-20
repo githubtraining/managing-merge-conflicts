@@ -32,7 +32,7 @@ steps:
   - title: Create a pull request
     description: Create a completely normal pull request to update the `_data/skills.yml` file
     event: pull_request.opened
-    link: https://github.com/{{ user.username }}/{{ course.template.name }}/issues/5
+    link: https://github.com/{{ user.username }}/{{ course.template.name }}/issues/1
     actions:
       - type: gate
         gates:
