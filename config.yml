@@ -78,7 +78,7 @@ steps:
   - title: Merge the pull request
     description: Merge your completely normal pull request
     event: pull_request.closed
-    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pull/6
+    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pulls
     actions:
       - type: gate
         gates:
@@ -97,14 +97,8 @@ steps:
         else:
           type: respond
           with: e_error.md
-      - type: getPullRequest
-        waitForMergeable: true
-        action_id: pr
-      - type: gate
-        left: '%actions.pr.data.mergeable%'
       - type: closeIssue
         issue: 1
-      - type: removeBranchProtection
       - type: getPullRequest
         action_id: new_pr
         pullRequest: "Second merge: Let's try a conflict"
