@@ -135,9 +135,9 @@ steps:
         else:
           type: respond
           with: e_error.md
-      - type: updateBranchProtection
-      - type: respond
-        with: 02e_after-merge-and-delete.md
+      - type: createReview
+        event: APPROVED
+        body: 02e_after-merge-and-delete.md
 
   - title: Create your own conflict
     description: Commit changes to the `_data/education.yml` file on the `add-education` branch in the 'Create Your Own Conflict' Pull Request
