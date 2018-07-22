@@ -165,7 +165,7 @@ steps:
           type: respond
           with: e_error.md
       - type: respond
-        with: 03c_first-comment-success.md
+        with: 03c_first-commit-success.md
         issue: Another User's Change
 
   - title: Conflicting change
