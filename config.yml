@@ -170,7 +170,7 @@ steps:
       - type: respond
         with: 03c_first-commit-success.md
         data:
-          secondPR: '%actions.new_pr.data.htm_url%'
+          secondPR: '%actions.new_pr.data.html_url%'
 
   - title: Conflicting change
     description: Approve the other pull request with changes to the `_data/education.yml` file.
