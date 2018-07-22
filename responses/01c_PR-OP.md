@@ -18,6 +18,8 @@ That merge _might_ look something like this:
 
 ### :keyboard: Activity: Merge the pull request
 
+> _Protip:_ I have already approved this pull request, so if you still see "Review required" in the merge view, try refreshing the page.
+
 1. Click **Merge pull request** below
 1. Click **Confirm merge**
 1. Click **Delete branch**
