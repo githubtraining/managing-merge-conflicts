@@ -20,6 +20,8 @@ This allows you to test the resolved code on your branch before you merge it int
 
 Go ahead and merge this pull request now.
 
+> I have already approved this pull request, so if you still see "Review required" in the merge view, try refreshing the page.
+
 1. Click **Merge pull request** below
 1. Click **Confirm merge**
 1. Click **Delete branch** and get ready for your next activity
