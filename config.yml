@@ -164,9 +164,13 @@ steps:
         else:
           type: respond
           with: e_error.md
+      - type: getPullRequest
+        pullRequest: Another User's Change
+        action_id: new_pr
       - type: respond
         with: 03c_first-commit-success.md
-        issue: Another User's Change
+        data:
+          secondPR: '%actions.new_pr.data.htm_url%'
 
   - title: Conflicting change
     description: Approve the other pull request with changes to the `_data/education.yml` file.
@@ -176,7 +180,7 @@ steps:
       - type: gate
         left: '%payload.pull_request.head.ref%'
         operator: '==='
-        right: education-conflict
+        right: add-education
         else:
           type: respond
           with: e_error.md
@@ -192,7 +196,7 @@ steps:
       - type: mergePullRequest
       - type: getPullRequest
         action_id: pr
-        pullRequest: '%payload.pull_request.number%'
+        pullRequest: Create your own Conflict
       - type: respond
         with: 04_bot-merged.md
         data:
