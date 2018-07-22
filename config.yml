@@ -1,6 +1,6 @@
 title: Managing merge conflicts
 tagline: Your interactive guide to resolving merge conflicts
-description: It’s common for developers to merge conflicting changes to the same file on GitHub—or produce what is commonly called a “merge conflict”. While merge conflicts might sound scary, this course gives you the skills you need to resolve them with ease.
+description: Merge conflicts are a normal part of working in Git. Learn why they happen and how to resolve them with ease.
 template:
   name: merge-conflict
   url: https://github.com/githubtraining/merge-conflict-template-repo.git
