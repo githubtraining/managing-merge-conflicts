@@ -20,6 +20,9 @@ before:
     title: Another User's Change
     body: 03_PR-conflict.md
     head: education-conflict
+    action_id: another_users_pr
+  - type: requestReviewFromRegistrant
+    pullRequest: '%actions.another_users_pr.data.number%'
   - type: createPullRequest
     title: Create your own Conflict
     body: 03b_PR-OP.md
