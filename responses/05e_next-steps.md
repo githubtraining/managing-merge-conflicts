@@ -6,8 +6,6 @@ Congratulations @{{ user.username }}, you've completed this course!
 
 ### What went well
 
-Your GitHub Pages resumé site is live (or will be live very shortly). [Click here to check it out.]({{url}})
-
 Before I say good-bye, here's a recap of all the tasks you've accomplished in your repository:
 
 - You learned why merge conflicts happen
@@ -66,6 +64,8 @@ Here are some instructions you can use to keep working on your resumé:
   1. In the "Source" drop-down, select **master branch**.
   1. Click **Save**.
   1. :construction: Warning! :construction: Make sure you don't see any [errors after you select save](https://user-images.githubusercontent.com/13326548/36769372-bc9b43d4-1bf8-11e8-8050-2b08cf8d146b.png). If you do, your page won't build correctly and this step will be incomplete.
+  
+  Your GitHub Pages resumé site will be live very shortly. [Click here to check it out.]({{url}})
  
   <hr>
 </details>
@@ -75,3 +75,6 @@ Here are some instructions you can use to keep working on your resumé:
 Want to work on resolving merge conflicts using the command line? Check out [this documentation](https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/).
 
 Want to keep learning? Feel free to [check out our other courses]({{ host }}/courses)?
+
+<hr>
+<h3 align="center">I won't respond to this issue, go ahead and close it when finished!</h3>
