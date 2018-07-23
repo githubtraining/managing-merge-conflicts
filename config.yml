@@ -142,6 +142,7 @@ steps:
       - type: getPullRequest
         pullRequest: Create your own Conflict
         action_id: next_pr
+      - type: updateBranchProtection
       - type: respond
         with: 02e_after-merge-and-delete.md
         data:
@@ -187,7 +188,6 @@ steps:
         else:
           type: respond
           with: e_error.md
-      - type: updateBranchProtection
       - type: gates
         left: '%payload.review.state%'
         operator: '==='
@@ -196,7 +196,9 @@ steps:
           type: respond
           with: e_didnt-approve.md
           issue: '%payload.pull_request.number%'
+      - type: removeBranchProtection
       - type: mergePullRequest
+      - type: updateBranchProtection
       - type: getPullRequest
         action_id: pr
         pullRequest: Create your own Conflict
@@ -227,6 +229,7 @@ steps:
           with: e_error.md
       - type: respond
         with: 03c_PR-free-of-conflicts.md
+      - type: removeBranchProtection
 
   - title: Merge the third pull request
     description: Merge the 'Create Your Own Conflict' pull request
