@@ -287,7 +287,7 @@ steps:
         left: '%payload.pull_request.merged%'
       - type: closeIssue
         issue: Next merge conflict
-      - type: createIssuea
+      - type: createIssue
         action_id: issue
         title: Enable GitHub Pages
         body: 05b_issue-OP.md
