@@ -295,14 +295,6 @@ steps:
         with: 04e_congrats.md
         data:
           url: '%actions.issue.data.html_url%'
-
-  - title: Enable GitHub Pages
-    description: Enable GitHub Pages on your repository
-    event: deployment
-    link: https://github.com/{{ user.username }}/{{ course.template.name }}/issues
-    actions:
-      - type: closeIssue
-        issue: Enable GitHub Pages
       - type: createIssue
         title: More optional changes
         body: 06x_issue-OP.md
@@ -317,4 +309,5 @@ steps:
         data:
           issue1: '%actions.more_changes.data.html_url%'
           issue2: '%actions.change_pic.data.html_url%'
+
 order: 5
