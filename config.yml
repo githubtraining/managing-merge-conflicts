@@ -188,7 +188,7 @@ steps:
         else:
           type: respond
           with: e_error.md
-      - type: gates
+      - type: gate
         left: '%payload.review.state%'
         operator: '==='
         right: 'approved'
