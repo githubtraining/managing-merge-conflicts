@@ -272,7 +272,7 @@ steps:
       - type: respond
         with: 04c_PR-free-of-conflicts.md
 
-  - title: Merge fourth pull request
+  - title: Merge the fourth pull request
     description: Merge the 'Advanced Conflicts' pull request
     event: pull_request.closed
     link: https://github.com/{{ user.username }}/{{ course.template.name }}/pulls
