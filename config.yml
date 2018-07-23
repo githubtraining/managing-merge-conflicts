@@ -248,7 +248,6 @@ steps:
       - type: closeIssue
         issue: Final merge conflict
       - type: getPullRequest
-        waitForMergeable: true
         action_id: pr
         pullRequest: '%payload.pull_request.number%'
       - type: respond
