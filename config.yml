@@ -203,6 +203,9 @@ steps:
         action_id: pr
         pullRequest: Create your own Conflict
       - type: respond
+        with: 03c_resolve-conflict-prompt.md
+        issue: '%actions.pr.data.number%'
+      - type: respond
         with: 04_bot-merged.md
         data:
           otherPR: '%actions.pr.data.html_url%'
