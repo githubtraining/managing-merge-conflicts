@@ -303,6 +303,7 @@ steps:
         title: Next steps
         body: 05e_next-steps.md
         data:
+          url: 'https://%user.username%.github.io/%payload.repository.name%'
           issue1: '%actions.more_changes.data.html_url%'
           issue2: '%actions.change_pic.data.html_url%'
       - type: respond
