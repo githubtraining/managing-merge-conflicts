@@ -291,21 +291,11 @@ steps:
       - type: closeIssue
         issue: Next merge conflict
       - type: createIssue
-        title: More optional changes
-        body: 06x_issue-OP.md
-        action_id: more_changes
-      - type: createIssue
-        title: 'Optional: Change picture'
-        body: 06y_issue-OP.md
-        action_id: change_pic
-      - type: createIssue
         action_id: issue
         title: Next steps
         body: 05e_next-steps.md
         data:
           url: 'https://%user.username%.github.io/%payload.repository.name%'
-          issue1: '%actions.more_changes.data.html_url%'
-          issue2: '%actions.change_pic.data.html_url%'
       - type: respond
         with: 04e_congrats.md
         data:
