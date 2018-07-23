@@ -249,7 +249,7 @@ steps:
         issue: Final merge conflict
       - type: getPullRequest
         action_id: pr
-        pullRequest: '%payload.pull_request.number%'
+        pullRequest: Advanced Conflicts
       - type: respond
         with: 03e_congrats.md
         data:
