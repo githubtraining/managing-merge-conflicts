@@ -305,7 +305,6 @@ steps:
         action_id: change_pic
       - type: respond
         with: 05e_next-steps.md
-        issue: Enable GitHub Pages
         data:
           issue1: '%actions.more_changes.data.html_url%'
           issue2: '%actions.change_pic.data.html_url%'
