@@ -248,8 +248,6 @@ steps:
           with: e_error.md
       - type: gate
         left: '%payload.pull_request.merged%'
-      - type: closeIssue
-        issue: Final merge conflict
       - type: getPullRequest
         action_id: pr
         pullRequest: Advanced Conflicts
