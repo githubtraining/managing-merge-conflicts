@@ -286,8 +286,6 @@ steps:
           with: e_error.md
       - type: gate
         left: '%payload.pull_request.merged%'
-      - type: closeIssue
-        issue: Next merge conflict
       - type: createIssue
         action_id: issue
         title: Next steps
