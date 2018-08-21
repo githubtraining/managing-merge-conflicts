@@ -13,7 +13,6 @@ Before I say good-bye, here's a recap of all the tasks you've accomplished in yo
 - You resolved a simple merge conflict
 - You created a merge conflict, and resolved it!
 - You resolved a multi-file merge conflict
-- You enabled GitHub Pages
 
 ### What's next?
 
