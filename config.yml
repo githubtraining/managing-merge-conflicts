@@ -3,7 +3,7 @@ tagline: Your interactive guide to resolving merge conflicts
 description: Merge conflicts are a normal part of working in Git. Learn why they happen and how to resolve them with ease.
 template:
   name: merge-conflict
-  url: https://github.com/githubtraining/merge-conflict-template-repo.git
+  repo: merge-conflict-template-repo
 tags:
   - Git
   - Merge conflicts
