@@ -296,5 +296,3 @@ steps:
         with: 04e_congrats.md
         data:
           url: '%actions.issue.data.html_url%'
-
-order: 5
