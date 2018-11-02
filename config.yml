@@ -35,7 +35,7 @@ steps:
   - title: Create a pull request
     description: Create a completely normal pull request to update the `_data/skills.yml` file
     event: pull_request.opened
-    link: https://github.com/{{ user.username }}/{{ course.template.name }}/issues/1
+    link: '{{ repoUrl }}/issues/1'
     actions:
       - type: gate
         gates:
@@ -81,7 +81,7 @@ steps:
   - title: Merge the pull request
     description: Merge your completely normal pull request
     event: pull_request.closed
-    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pulls
+    link: '{{ repoUrl }}/pulls'
     actions:
       - type: gate
         gates:
@@ -113,7 +113,7 @@ steps:
   - title: Resolve a simple conflict
     description: Resolve your first merge conflict
     event: pull_request.synchronize
-    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pulls
+    link: '{{ repoUrl }}/pulls'
     actions:
       - type: getPullRequest
         waitForMergeable: true
@@ -130,7 +130,7 @@ steps:
   - title: Merge the first resolved pull request
     description: Merge the pull request that holds your first, simple conflict
     event: pull_request.closed
-    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pulls
+    link: '{{ repoUrl }}/pulls'
     actions:
       - type: gate
         left: '%payload.pull_request.head.ref%'
@@ -151,7 +151,7 @@ steps:
   - title: Create your own conflict
     description: Commit changes to the `_data/education.yml` file on the `add-education` branch in the 'Create Your Own Conflict' Pull Request
     event: pull_request.synchronize
-    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pulls
+    link: '{{ repoUrl }}/pulls'
     actions:
       - type: gate
         left: '%payload.pull_request.head.ref%'
@@ -179,7 +179,7 @@ steps:
   - title: Conflicting change
     description: Approve the other pull request with changes to the `_data/education.yml` file.
     event: pull_request_review.submitted
-    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pulls
+    link: '{{ repoUrl }}/pulls'
     actions:
       - type: gate
         left: '%payload.pull_request.head.ref%'
@@ -213,7 +213,7 @@ steps:
   - title: Resolve conflicts you created
     description: Resolve the conflict in the 'Create Your Own Conflict' pull request
     event: pull_request.synchronize
-    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pulls
+    link: '{{ repoUrl }}/pulls'
     actions:
       - type: gate
         left: '%payload.pull_request.head.ref%'
@@ -237,7 +237,7 @@ steps:
   - title: Merge the third pull request
     description: Merge the 'Create Your Own Conflict' pull request
     event: pull_request.closed
-    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pulls
+    link: '{{ repoUrl }}/pulls'
     actions:
       - type: gate
         left: '%payload.pull_request.head.ref%'
@@ -259,7 +259,7 @@ steps:
   - title: Resolve conflicts in the Advanced Conflicts pull request
     description: Resolve the merge conflict in the 'Advanced Conflicts' pull request
     event: pull_request.synchronize
-    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pulls
+    link: '{{ repoUrl }}/pulls'
     actions:
       - type: gate
         left: '%payload.pull_request.head.ref%'
@@ -275,7 +275,7 @@ steps:
   - title: Merge the fourth pull request
     description: Merge the 'Advanced Conflicts' pull request
     event: pull_request.closed
-    link: https://github.com/{{ user.username }}/{{ course.template.name }}/pulls
+    link: '{{ repoUrl }}/pulls'
     actions:
       - type: gate
         left: '%payload.pull_request.head.ref%'
