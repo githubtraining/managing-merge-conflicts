@@ -28,6 +28,8 @@ before:
     title: "Second merge: Let's try a conflict"
     body: 02b_PR-OP.md
     head: update-config
+    data:
+      thePayload: '%payload%'
   - type: createPullRequest
     title: Another User's Change
     body: 03_PR-conflict.md
