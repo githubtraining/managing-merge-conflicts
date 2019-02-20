@@ -26,7 +26,7 @@ This time, however, I've made it a bit more complicated.
 1. **Optional:** Again, if you're trying to use this course to build a resume, you can resolve the conflicting files with your own information
 1. With the merge conflicts resolved and the markers removed in the `experience.yml` file, stage the file:
     ```shell
-    git add _data/expereince.yml`
+    git add _data/experience.yml
     ```
 1. Open the next file in your text editor: `_data/interests.yml`
 1. This file has some extra merge commit markers. Simply select the Interests you would like to list and remove the others (and all those extra conflict markers).

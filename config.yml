@@ -251,6 +251,8 @@ steps:
           with: e_error.md
       - type: respond
         with: 03c_PR-free-of-conflicts.md
+        data:
+          branch: '%payload.pull_request.head.ref%'
       - type: removeBranchProtection
 
   - title: Merge the third pull request
@@ -290,6 +292,8 @@ steps:
       - type: getPullRequest
       - type: respond
         with: 04c_PR-free-of-conflicts.md
+        data: 
+          branch: '%payload.pull_request.head.ref%'
 
   - title: Merge the fourth pull request
     description: Merge the 'Advanced Conflicts' pull request
