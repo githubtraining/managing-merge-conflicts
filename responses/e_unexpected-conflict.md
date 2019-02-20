@@ -14,7 +14,7 @@ I was a new change until someone made a newer change
 
 1. Scroll down and click the **Resolve conflict** button.
    
-      - If the **Resolve conflict** button is greyed out, that means your merge conflict is too advanced for the GitHub.com UI to handle. The UI will provide instructions on how to handle the merge conflict on your locally, however, if you are uncomfortable resovling the merge confict locally, you can always close this Pull Request and re-start the activity on a new branch. 
+      - If the **Resolve conflict** button is greyed out, that means your merge conflict is too advanced for the GitHub.com UI to handle. The UI will provide instructions on how to handle the merge conflict on your locally, however, if you are uncomfortable resolving the merge conflict locally, you can always close this Pull Request and re-start the activity on a new branch. 
 
 1. The file or files that have a conflict are displayed on the left side of the Resolve Conflicts screen. After you select a file, it will be displayed in the pane on the right side. 
 1. In the file you selected, there should be a block of content that looks similar to the example merge conflict I shared above :point-up:.
