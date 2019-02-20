@@ -33,24 +33,24 @@ Even though you're working on the command line, you may find it easier to use Gi
 {% if preferences.gitTool == 'cli' %}
 To try and resolve the conflict locally:
 1. Checkout to this branch:
-      ```shell
-      git checkout {{ branch }}
-      ```
+    ```shell
+    git checkout {{ branch }}
+    ```
 1. Merge in the `master` branch:
-      ```shell
-      git merge master
-      ```
+    ```shell
+    git merge master
+    ```
 1. Look in Git's response for the files with a conflict.
 1. Open each file, remove the conflict markers, and choose the content you'd like to keep.
 1. Stage and commit your files:
-      ```shell
-      git add .
-      git commit -m "merge master into {{ branch }}"
-      ```
+    ```shell
+    git add .
+    git commit -m "merge master into {{ branch }}"
+    ```
 1. Push your changes to GitHub:
-      ```shell
-      git push
-      ```
+    ```shell
+    git push
+    ```
 1. With all of your merge conflicts resolved, click the **Merge commit** button. 
 {% endif %}
 

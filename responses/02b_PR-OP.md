@@ -17,14 +17,14 @@ Let's help our friends resolve this conflict.
 
 {% if preferences.gitTool == 'cli' %}
 1. Checkout to the `update-config` branch and ensure it is up to date:
-       ```shell
-       git checkout update-config
-       git pull
-       ```
+    ```shell
+    git checkout update-config
+    git pull
+    ```
 1. Merge the `master` branch into the `update-config` branch. To ensure that you're working with an up to date copy of `master`, we'll use its remote tracking branch:
-       ```shell
-       git merge origin/master
-       ```
+    ```shell
+    git merge origin/master
+    ```
 1. In Git's response, you'll see the file with the conflict. Open it in your text editor.
 1. Look for the marked hunks that begin with  `<<<<<<<  update-config` and ends with `>>>>>>> master`. These markers are added by Git to show you the content that is in conflict.
 1. Remove the changes made on the master branch by deleting all of the content below the `=======` and above `>>>>>>> master`
@@ -36,14 +36,14 @@ Let's help our friends resolve this conflict.
 
 1. **Optional:** If you'd like, you can edit the `_config.yml` file with your own information. Change any of the lines within the file, even outside of where the markers were. More about this below
 1. Close the file. Stage and commit your changes:
-       ```shell
-       git add .
-       git commit -m "merge master into update-config"
-       ```
+    ```shell
+    git add .
+    git commit -m "merge master into update-config"
+    ```
 1. Push your merged branches to GitHub:
-       ```shell
-       git push
-       ```
+    ```shell
+    git push
+    ```
 {% else %}
 1. At the bottom of the page in the "This branch has conflicts that must be resolved" section of the Pull Request, click the **Resolve conflicts** button
 1. Look for the highlighted sections that begins with  `<<<<<<<  update-config` and ends with `>>>>>>> master`. These markers are added by Git to show you the content that is in conflict

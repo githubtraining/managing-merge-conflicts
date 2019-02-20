@@ -12,14 +12,14 @@ This time, however, I've made it a bit more complicated.
 
 {% if preferences.gitTool == 'cli' %}
 1. Checkout to the `add-experience` branch and ensure it is up to date:
-       ```shell
-       git checkout add-experience
-       git pull
-       ```
+    ```shell
+    git checkout add-experience
+    git pull
+    ```
 1. Merge the `master` branch into the `add-experience` branch. To ensure that you're working with an up to date copy of `master`, we'll use its remote tracking branch:
-       ```shell
-       git merge origin/master
-       ```
+    ```shell
+    git merge origin/master
+    ```
 1. In Git's response, you'll see two files with conflicts: `_data/experience.yml` and `_data/interests.yml`.
 1. Open `experience.yml` in your text editor.
 1. Notice there are two distinct sets of conflict markers. This is because multiple sections of the file were modified on both branches, so Git identified the two changes within the file as two separate conflicts. Remove the conflict markers and pick your desired content. 
@@ -31,14 +31,14 @@ This time, however, I've made it a bit more complicated.
 1. Open the next file in your text editor: `_data/interests.yml`
 1. This file has some extra merge commit markers. Simply select the Interests you would like to list and remove the others (and all those extra conflict markers).
 1. Close the file. Stage it and commit your changes:
-       ```shell
-       git add .
-       git commit -m "merge master into add-experience"
-       ```
+    ```shell
+    git add .
+    git commit -m "merge master into add-experience"
+    ```
 1. Push your merged branches to GitHub:
-       ```shell
-       git push
-       ```
+    ```shell
+    git push
+    ```
 {% else %}
 1. Click **Resolve conflicts**
 1. On the left, you will notice two files listed: `_data/experience.yml` and `_data/interests.yml`. Let's start with `experience.yml`
