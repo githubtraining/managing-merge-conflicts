@@ -73,6 +73,8 @@ steps:
         else:
           type: respond
           with: e_unexpected-conflict.md
+          data: 
+            branch: '%payload.pull_request.head.ref%'
       - type: getTree
         action_id: tree
         sha: '%payload.pull_request.head.ref%'
