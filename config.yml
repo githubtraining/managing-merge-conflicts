@@ -21,6 +21,8 @@ before:
   - type: createIssue
     title: Welcome
     body: 01b_introduction-issue.md
+    data:
+      thePayload: '%payload%'
   - type: updateBranchProtection
   - type: createPullRequest
     title: "Second merge: Let's try a conflict"

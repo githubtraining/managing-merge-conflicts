@@ -35,6 +35,27 @@ Before we get too far ahead of ourselves, let's first practice making a simple c
 
 ### :keyboard: Activity: Create a normal pull request
 
+{% if preferences.gitTool == 'cli' %}
+1. Open your preferred command line interface, which we'll call your shell from now on.
+1. Clone this repository:
+      ```shell
+      git clone {{ thePayload.repository.clone_url }}
+      ```
+1. Navigate to the repository in your shell:
+      ```shell
+      cd {{ thePayload.repository.name }}
+      ```
+1. Create a `change-skills` branch:
+      ```shell
+      git checkout -b change-skills
+      ```
+1. Edit `_data/skills.yml` file to add a skill or two that you're proficient in
+1. Push the branch to GitHub:
+      ```shell
+      git push --set-upstream origin change-skills
+      ```
+1. On GitHub, [create a Pull Request]({{ thePayload.repository.html_url }}/compare/add-cli-pref?expand=1) with the base set to `master` and the compare set to `change-skills`.
+{% else %}
 1. On the **Code** tab, click the `_data/skills.yml` file
 1. In the upper right corner of the file view, click the :pencil2: icon to open the file editor
 1. In the file, add a skill or two that you're proficient in
@@ -43,6 +64,7 @@ Before we get too far ahead of ourselves, let's first practice making a simple c
 1. Select **Propose file change**
 1. In the "Leave a comment" field of the pull request, describe the change you made
 1. Click **Create pull request**
+{% endif %}
 1. :construction: Don't merge yet! :construction: Refresh the pull request to receive the next comment/instructions.
 
 For a printable version of the steps in this course, check out the [Quick Reference Guide]({{ host }}/public/{{ course.slug }}.pdf).
