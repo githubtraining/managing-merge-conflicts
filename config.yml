@@ -125,6 +125,7 @@ steps:
         with: 01c_resolution-success.md
         data:
           url: '%actions.new_pr.data.html_url%'
+          branch: '%payload.pull_request.head.ref%'
   
   - title: Resolve a simple conflict
     description: Resolve your first merge conflict
@@ -142,6 +143,8 @@ steps:
       - type: removeBranchProtection
       - type: respond
         with: 02c_resolution-success.md
+        data:
+          branch: '%payload.pull_request.head.ref%'
 
   - title: Merge the first resolved pull request
     description: Merge the pull request that holds your first, simple conflict
