@@ -4,6 +4,16 @@ description: Merge conflicts are a normal part of working in Git. Learn why they
 template:
   name: merge-conflict
   repo: merge-conflict-template-repo
+preferences:
+  - type: radio
+    name: gitTool
+    label: Preferred Git tool
+    description: Learn right from the web UI, or using your chosen tool
+    options:
+      - label: Use the GitHub.com web interface
+        value: dotcom
+      - label: Use the command line
+        value: cli
 tags:
   - Git
   - Merge conflicts
@@ -11,11 +21,15 @@ before:
   - type: createIssue
     title: Welcome
     body: 01b_introduction-issue.md
+    data:
+      thePayload: '%payload%'
   - type: updateBranchProtection
   - type: createPullRequest
     title: "Second merge: Let's try a conflict"
     body: 02b_PR-OP.md
     head: update-config
+    data:
+      thePayload: '%payload%'
   - type: createPullRequest
     title: Another User's Change
     body: 03_PR-conflict.md
@@ -59,6 +73,8 @@ steps:
         else:
           type: respond
           with: e_unexpected-conflict.md
+          data: 
+            branch: '%payload.pull_request.head.ref%'
       - type: getTree
         action_id: tree
         sha: '%payload.pull_request.head.ref%'
@@ -109,6 +125,7 @@ steps:
         with: 01c_resolution-success.md
         data:
           url: '%actions.new_pr.data.html_url%'
+          branch: '%payload.pull_request.head.ref%'
   
   - title: Resolve a simple conflict
     description: Resolve your first merge conflict
@@ -126,6 +143,8 @@ steps:
       - type: removeBranchProtection
       - type: respond
         with: 02c_resolution-success.md
+        data:
+          branch: '%payload.pull_request.head.ref%'
 
   - title: Merge the first resolved pull request
     description: Merge the pull request that holds your first, simple conflict
@@ -232,6 +251,8 @@ steps:
           with: e_error.md
       - type: respond
         with: 03c_PR-free-of-conflicts.md
+        data:
+          branch: '%payload.pull_request.head.ref%'
       - type: removeBranchProtection
 
   - title: Merge the third pull request
@@ -271,6 +292,8 @@ steps:
       - type: getPullRequest
       - type: respond
         with: 04c_PR-free-of-conflicts.md
+        data: 
+          branch: '%payload.pull_request.head.ref%'
 
   - title: Merge the fourth pull request
     description: Merge the 'Advanced Conflicts' pull request
