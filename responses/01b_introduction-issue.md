@@ -50,11 +50,16 @@ Before we get too far ahead of ourselves, let's first practice making a simple c
       git checkout -b change-skills
       ```
 1. Edit `_data/skills.yml` file to add a skill or two that you're proficient in
+1. Stage and commit your change:
+    ```shell
+    git add _data/skills.yml
+    git commit -m "<YOUR-MESSAGE>"
+    ```
 1. Push the branch to GitHub:
       ```shell
       git push --set-upstream origin change-skills
       ```
-1. On GitHub, [create a Pull Request]({{ thePayload.repository.html_url }}/compare/add-cli-pref?expand=1) with the base set to `master` and the compare set to `change-skills`.
+1. On GitHub, [create a Pull Request]({{ thePayload.repository.html_url }}/compare/change-skills?expand=1) with the base set to `master` and the compare set to `change-skills`.
 {% else %}
 1. On the **Code** tab, click the `_data/skills.yml` file
 1. In the upper right corner of the file view, click the :pencil2: icon to open the file editor
