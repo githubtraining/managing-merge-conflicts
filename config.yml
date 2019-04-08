@@ -17,6 +17,7 @@ preferences:
 tags:
   - Git
   - Merge conflicts
+  - GitHub
 before:
   - type: createIssue
     title: Welcome
