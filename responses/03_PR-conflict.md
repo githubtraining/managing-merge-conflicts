@@ -6,7 +6,7 @@ After you merge this pull request, your pull request will have a merge conflict.
 
 ### :keyboard: Activity: Approving a pull request
 
-1. In the pull request status window below, click **Add your review**
+1. In the **Files changed** tab of the pull request, click **Review changes**
 1. When the pull request review window displays, select **Approve** and click **Submit review**
 
 <hr>
