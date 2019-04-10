@@ -1,20 +1,10 @@
-## Step 5b: Merging similar changes
+## Where do conflicts come from?
 
-Good job! Remember from the last issue that your history now looks something like this, without conflicts:
+In a real world scenario, it's possible that a peer or colleague will have edited the same file in the same place as your pull request.
 
-![branch commits](https://user-images.githubusercontent.com/13326548/36703529-e1458976-1b10-11e8-97cb-ae4c2361bd20.png)
+To demonstrate, I'll stand in as your colleague :wave:. In this other pull request {{ secondPR }}, you'll see that the education file has been changed. The other pull request was just merged to `master`, which means there's now a conflict in your pull request.
 
-However, in a real world scenario, it's possible that a peer or colleague will have edited the same file in the same place as your pull request.
-
-To demonstrate, I'll stand in as your colleague :wave:. In Pull Request {{ secondPR }}, you'll see that the education file has been changed. The other pull request was just merged to `master`, which means there's now a conflict in your pull request.
-
-## Step 6: Resolve new conflicts you created
-
-Good job! By making commits on two branches, you've created a history just like you saw in your previous conflict.
-
-![deviated branches](https://user-images.githubusercontent.com/13326548/36703541-ef3c48f8-1b10-11e8-899f-bbaaf5927d24.png)
-
-Typically, this happens when someone else merges a branch into `master` that has commits in the same files you've been working on.
+## Step 6: Resolve new conflicts
 
 ### :keyboard: Activity: Resolve the conflict
 
@@ -27,4 +17,4 @@ Typically, this happens when someone else merges a branch into `master` that has
 Because you created both conflicts, feel free to resolve these conflicts as you wish.
 
 <hr>
-<h3 align="center">Return to this pull request for next steps</h3>
+<h3 align="center">Return to this pull request for next steps.</h3>

@@ -6,9 +6,9 @@ Great job, @{{ user.username }}, your pull request is free of conflicts. :tada:
 
 Go ahead and merge this pull request now.
 
-1. Click **Merge pull request** below
-2. Click **Confirm Merge**
-3. Click **Delete branch**
+1. Click **Merge pull request** below.
+2. Click **Confirm Merge**.
+3. Click **Delete branch**.
 
 {% if preferences.gitTool == 'cli' %}
 You can also merge locally:
@@ -32,4 +32,4 @@ You can also merge locally:
 {% endif %}
 
 <hr>
-<h3 align="center">Watch below for my response</h3>
+<h3 align="center">Watch below for my response.</h3>
