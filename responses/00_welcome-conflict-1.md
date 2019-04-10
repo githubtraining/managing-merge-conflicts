@@ -1,4 +1,35 @@
-## Step 3: Resolve a simple conflict
+## Welcome to Managing Merge Conflicts :tada:
+
+Hello, and welcome! If you're here to learn about and practice resolving merge conflicts, you're in the right place.
+
+In this course, you'll learn why merge conflicts happen by solving **four merge conflicts**. All of the merge conflicts in this course will be simple enough to solve from within the GitHub.com user interface, but if you'd prefer, you can solve them using the command line or other local tools.
+
+As an added bonus, the project we are using for this course is a resume hosted on [GitHub Pages](https://pages.github.com/)! So, if you want to keep working after you complete this course, please feel free!
+
+> Note: You may notice that some branches and pull requests already exist. We'll be using them in later activities in this course.
+
+### How merge conflicts happen
+
+*Version control* lets you make incremental changes to your code or file base while keeping the history. Git operates as a linked list, so a small history of three commits <sup>[:book:](https://help.github.com/articles/github-glossary/#commit)</sup> might look like this:
+
+![three commits in a linked list format](https://user-images.githubusercontent.com/13326548/36703370-32b56354-1b10-11e8-881f-f356838111d4.png)
+
+In the **GitHub Flow**, you...
+- first create a new branch <sup>[:book:](https://help.github.com/articles/github-glossary/#branch)</sup> off of the base branch, which is really just a reference point to a commit on the base branch. 
+
+![add a branch](https://user-images.githubusercontent.com/13326548/36703385-4590b28a-1b10-11e8-90c7-a5ededee0950.png)
+
+- Next, you add one or more commits that, for now, exist only on your branch. The other commits stay fixed to their reference point in history.
+
+![branch with new commit](https://user-images.githubusercontent.com/13326548/36703395-52d2e364-1b10-11e8-9bba-a61d4d72e02b.png)
+
+- Finally, you open a pull request <sup>[:book:](https://help.github.com/articles/github-glossary/#pull-request)</sup> to propose that your new commits be included in the base branch, optionally add more commits, and then merge <sup>[:book:](https://help.github.com/articles/github-glossary/#merge)</sup> and delete your branch!
+
+A **Merge conflict** occurs when someone else made a change on the base branch in the same file and location where you proposed changes. This usually happens when someone else merges in their branch before you merge yours.
+
+This can be intimidating, but have no fear, Git knows how to handle this! It only needs a human to decide how to resolve the conflict.
+
+## Step 1: Resolve a simple conflict
 
 You may merge a lot of pull requests before you encounter your first merge conflict. That’s because Git is really smart when it comes to merging. Unless you're paying close attention to other branches in your repository, you usually won't know you have a conflict until you create the pull request.
 
@@ -14,8 +45,16 @@ Let's help our friends resolve this conflict.
 
 ### :keyboard: Activity: Resolving your first merge conflict
 
-
 {% if preferences.gitTool == 'cli' %}
+1. Open your preferred command line interface, which we'll call your shell from now on.
+1. Clone this repository:
+      ```shell
+      git clone {{ thePayload.repository.clone_url }}
+      ```
+1. Navigate to the repository in your shell:
+      ```shell
+      cd {{ thePayload.repository.name }}
+      ```
 1. Checkout to the `update-config` branch and ensure it is up to date:
     ```shell
     git checkout update-config

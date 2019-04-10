@@ -1,4 +1,4 @@
-## Step 4: Merge the first resolved pull request
+## Step 2: Merge the first resolved pull request
 
 You did it, @{{ user.username }}! Nice job resolving that conflict. Most conflicts in your day to day experience should be pretty simple, as in that activity. You may need to discuss the resolution with your peers, but if your team is regularly working together and reviewing pull requests, resolving conflicts is easy.
 

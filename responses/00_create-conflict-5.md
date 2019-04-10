@@ -1,4 +1,4 @@
-## Step 5a: Create your own conflict
+## Step 5: Create your own conflict
 
 So far, this pull request doesn't have any conflicts, but I have added some new branch protections to prevent you from merging before you're ready.
 

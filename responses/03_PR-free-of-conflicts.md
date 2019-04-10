@@ -1,4 +1,4 @@
-## Step 10: Merge fourth pull request
+## Step 4: Merge pull request
 
 Great job, @{{ user.username }}, your pull request is free of conflicts. :tada:
 
@@ -7,8 +7,8 @@ Great job, @{{ user.username }}, your pull request is free of conflicts. :tada:
 Go ahead and merge this pull request now.
 
 1. Click **Merge pull request** below
-1. Click **Confirm Merge**
-1. Click **Delete branch**
+2. Click **Confirm Merge**
+3. Click **Delete branch**
 
 {% if preferences.gitTool == 'cli' %}
 You can also merge locally:
