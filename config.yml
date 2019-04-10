@@ -2,7 +2,7 @@ title: Managing merge conflicts audit
 tagline: Your interactive guide to resolving merge conflicts
 description: Merge conflicts are a normal part of working in Git. Learn why they happen and how to resolve them with ease.
 template:
-  name: merge-conflict
+  name: merge-conflict-audit
   repo: merge-conflict-template-repo
 preferences:
   - type: radio
@@ -14,119 +14,36 @@ preferences:
         value: dotcom
       - label: Use the command line
         value: cli
+      - label: Use GitHub Desktop
+        value: desktop
 tags:
   - Git
   - Merge conflicts
+  - GitHub
 before:
-  - type: createIssue
-    title: Welcome
-    body: 01b_introduction-issue.md
-    data:
-      thePayload: '%payload%'
   - type: updateBranchProtection
   - type: createPullRequest
-    title: "Second merge: Let's try a conflict"
-    body: 02b_PR-OP.md
+    title: "Welcome! Let's resolve a conflict."
+    body: 00_welcome-conflict-1.md
     head: update-config
     data:
       thePayload: '%payload%'
   - type: createPullRequest
     title: Another User's Change
-    body: 03_PR-conflict.md
+    body: 00_another-user-conflict-6.md
     head: education-conflict
     action_id: another_users_pr
-  - type: requestReviewFromRegistrant
-    pullRequest: '%actions.another_users_pr.data.number%'
   - type: createPullRequest
-    title: Create your own Conflict
-    body: 03b_PR-OP.md
+    title: More conflicts
+    body: 00_more-conflicts-3.md
     head: add-education
   - type: createPullRequest
-    title: Advanced Conflicts
-    body: 04b_PR-OP.md
+    title: Create your own conflict
+    body: 00_create-conflict-5.md
     head: add-experience
+
 steps:
-  - title: Create a pull request
-    description: Create a completely normal pull request to update the `_data/skills.yml` file
-    event: pull_request.opened
-    link: '{{ repoUrl }}/issues/1'
-    actions:
-      - type: gate
-        gates:
-          - left: '%payload.pull_request.head.ref%'
-            operator: '!=='
-            right: 'update-config'
-          - left: '%payload.pull_request.head.ref%'
-            operator: '!=='
-            right: 'education-conflict'
-          - left: '%payload.pull_request.head.ref%'
-            operator: '!=='
-            right: 'add-education'
-          - left: '%payload.pull_request.head.ref%'
-            operator: '!=='
-            right: 'add-experience'
-      - type: getPullRequest
-        action_id: pr
-        waitForMergeable: true
-      - type: gate
-        left: '%actions.pr.data.mergeable%'
-        else:
-          type: respond
-          with: e_unexpected-conflict.md
-          data: 
-            branch: '%payload.pull_request.head.ref%'
-      - type: getTree
-        action_id: tree
-        sha: '%payload.pull_request.head.ref%'
-        recursive: true
-      - type: gate
-        left: '%actions.tree.data.tree%'
-        operator: includes
-        right: 'path:_data/skills.yml'
-      - type: respond
-        issue: 1
-        with: 01d_go-to-pr.md
-        data:
-          url: '%payload.pull_request.html_url%'
-      - type: createReview
-        body: 01c_PR-OP.md
-        event: 'APPROVE'
-        data:
-          branch: '%payload.pull_request.head.ref%'
-        
-  - title: Merge the pull request
-    description: Merge your completely normal pull request
-    event: pull_request.closed
-    link: '{{ repoUrl }}/pulls'
-    actions:
-      - type: gate
-        gates:
-          - left: '%payload.pull_request.head.ref%'
-            operator: '!=='
-            right: 'update-config'
-          - left: '%payload.pull_request.head.ref%'
-            operator: '!=='
-            right: 'education-conflict'
-          - left: '%payload.pull_request.head.ref%'
-            operator: '!=='
-            right: 'add-education'
-          - left: '%payload.pull_request.head.ref%'
-            operator: '!=='
-            right: 'add-experience'
-        else:
-          type: respond
-          with: e_error.md
-      - type: closeIssue
-        issue: 1
-      - type: getPullRequest
-        action_id: new_pr
-        pullRequest: "Second merge: Let's try a conflict"
-      - type: respond
-        with: 01c_resolution-success.md
-        data:
-          url: '%actions.new_pr.data.html_url%'
-          branch: '%payload.pull_request.head.ref%'
-  
+  #step 1 - resolve simple conflict
   - title: Resolve a simple conflict
     description: Resolve your first merge conflict
     event: pull_request.synchronize
@@ -142,10 +59,11 @@ steps:
           with: e_error.md
       - type: removeBranchProtection
       - type: respond
-        with: 02c_resolution-success.md
+        with: 01_success.md
         data:
           branch: '%payload.pull_request.head.ref%'
 
+  #step 2 - merge
   - title: Merge the first resolved pull request
     description: Merge the pull request that holds your first, simple conflict
     event: pull_request.closed
@@ -159,14 +77,57 @@ steps:
           type: respond
           with: e_error.md
       - type: getPullRequest
-        pullRequest: Create your own Conflict
+        pullRequest: More conflicts
         action_id: next_pr
       - type: updateBranchProtection
       - type: respond
-        with: 02e_after-merge-and-delete.md
+        with: 02_delete.md
         data:
           url: '%actions.next_pr.data.html_url%'
 
+  #step 3: More complex conflicts
+  - title: Resolve conflicts in a more complex pull request
+    description: Resolve the merge conflict in a more complex pull request
+    event: pull_request.synchronize
+    link: '{{ repoUrl }}/pulls'
+    actions:
+      - type: gate
+        left: '%payload.pull_request.head.ref%'
+        operator: '==='
+        right: add-experience
+        else:
+          type: respond
+          with: e_error.md
+      - type: getPullRequest
+      - type: respond
+        with: 03_PR-free-of-conflicts.md
+        data: 
+          branch: '%payload.pull_request.head.ref%'
+  
+  #step 4: merge
+  - title: Merge the pull request
+    description: Merge the pull request
+    event: pull_request.closed
+    link: '{{ repoUrl }}/pulls'
+    actions:
+      - type: gate
+        left: '%payload.pull_request.head.ref%'
+        operator: '==='
+        right: add-experience
+        else:
+          type: respond
+          with: e_error.md
+      - type: gate
+        left: '%payload.pull_request.merged%'
+      - type: getPullRequest
+        pullRequest: Create your own conflict
+        action_id: conflict_pr
+      - type: respond
+        with: 04_next-steps.md
+        data:
+          url: '%actions.conflict_pr.data.html_url%'
+
+  #step 5: Create a conflict
   - title: Create your own conflict
     description: Commit changes to the `_data/education.yml` file on the `add-education` branch in the 'Create Your Own Conflict' Pull Request
     event: pull_request.synchronize
@@ -191,45 +152,16 @@ steps:
         pullRequest: Another User's Change
         action_id: new_pr
       - type: respond
-        with: 03c_first-commit-success.md
+        with: 05_first-commit-success.md
         data:
           secondPR: '%actions.new_pr.data.html_url%'
-
-  - title: Conflicting change
-    description: Approve the other pull request with changes to the `_data/education.yml` file.
-    event: pull_request_review.submitted
-    link: '{{ repoUrl }}/pulls'
-    actions:
-      - type: gate
-        left: '%payload.pull_request.head.ref%'
-        operator: '==='
-        right: education-conflict
-        else:
-          type: respond
-          with: e_error.md
-      - type: gate
-        left: '%payload.review.state%'
-        operator: '==='
-        right: 'approved'
-        else:
-          type: respond
-          with: e_didnt-approve.md
-          issue: '%payload.pull_request.number%'
       - type: removeBranchProtection
       - type: mergePullRequest
+        pullRequest: Another User's Change
       - type: updateBranchProtection
-      - type: getPullRequest
-        action_id: pr
-        pullRequest: Create your own Conflict
-      - type: respond
-        with: 03c_resolve-conflict-prompt.md
-        issue: '%actions.pr.data.number%'
-      - type: respond
-        with: 04_bot-merged.md
-        data:
-          otherPR: '%actions.pr.data.html_url%'
 
-  - title: Resolve conflicts you created
+  #step 6: resolve created conflict
+  - title: Resolve conflicts created
     description: Resolve the conflict in the 'Create Your Own Conflict' pull request
     event: pull_request.synchronize
     link: '{{ repoUrl }}/pulls'
@@ -250,11 +182,12 @@ steps:
           type: respond
           with: e_error.md
       - type: respond
-        with: 03c_PR-free-of-conflicts.md
+        with: 06_PR-free-of-conflicts.md
         data:
           branch: '%payload.pull_request.head.ref%'
       - type: removeBranchProtection
 
+  #step 7: merge
   - title: Merge the third pull request
     description: Merge the 'Create Your Own Conflict' pull request
     event: pull_request.closed
@@ -269,53 +202,13 @@ steps:
           with: e_error.md
       - type: gate
         left: '%payload.pull_request.merged%'
-      - type: getPullRequest
-        action_id: pr
-        pullRequest: Advanced Conflicts
-      - type: respond
-        with: 03e_congrats.md
-        data:
-          url: '%actions.pr.data.html_url%'
-
-  - title: Resolve conflicts in the Advanced Conflicts pull request
-    description: Resolve the merge conflict in the 'Advanced Conflicts' pull request
-    event: pull_request.synchronize
-    link: '{{ repoUrl }}/pulls'
-    actions:
-      - type: gate
-        left: '%payload.pull_request.head.ref%'
-        operator: '==='
-        right: add-experience
-        else:
-          type: respond
-          with: e_error.md
-      - type: getPullRequest
-      - type: respond
-        with: 04c_PR-free-of-conflicts.md
-        data: 
-          branch: '%payload.pull_request.head.ref%'
-
-  - title: Merge the fourth pull request
-    description: Merge the 'Advanced Conflicts' pull request
-    event: pull_request.closed
-    link: '{{ repoUrl }}/pulls'
-    actions:
-      - type: gate
-        left: '%payload.pull_request.head.ref%'
-        operator: '==='
-        right: add-experience
-        else:
-          type: respond
-          with: e_error.md
-      - type: gate
-        left: '%payload.pull_request.merged%'
       - type: createIssue
         action_id: issue
         title: Next steps
-        body: 05e_next-steps.md
+        body: 07_next-steps.md
         data:
           url: 'https://%user.username%.github.io/%payload.repository.name%'
       - type: respond
-        with: 04e_congrats.md
+        with: 07_congrats.md
         data:
           url: '%actions.issue.data.html_url%'

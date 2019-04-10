@@ -1,1 +1,0 @@
-@{{ user.username }}, nice work creating a pull request! Let's talk over [there]({{ url }}).
