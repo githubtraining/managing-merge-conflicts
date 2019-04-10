@@ -68,11 +68,31 @@ Let's help our friends resolve this conflict.
     ```shell
  git push
     ```
-{% else %}
-1. At the bottom of the page in the "This branch has conflicts that must be resolved" section of the Pull Request, click the **Resolve conflicts** button.
-1. Look for the highlighted sections that begins with  `<<<<<<<  update-config` and ends with `>>>>>>> master`. These markers are added by Git to show you the content that is in conflict.
+{% elsif preferences.gitTool == 'desktop' %}
+1. First, make sure you have [GitHub Desktop](https://desktop.github.com/) installed and [configured](https://help.github.com/en/desktop/getting-started-with-github-desktop/authenticating-to-github). 
+1. On the `code` tab of this repository, click the green **Clone or download** button. Click **Open in Desktop**. 
+1. In GitHub Desktop, confirm the blue **Clone** button in the pop up window. 
+1. Checkout to the `update-config` branch by clicking **Current branch**, and selecting `update-config`. 
+1. Merge `master` into the `update-config` branch by clicking **Current branch**, and selecting **Choose a branch to merge into update-config**. 
+1. Select the `master` branch, and click **Merge master into update-config**.
+1. You'll be prompted about the merge conflict, and asked if you'd like to resolve it in your default editor. Click the button to open the file in your default editor. 
+1. Look for the marked hunks that begin with  `<<<<<<<  update-config` and ends with `>>>>>>> master`. These markers are added by Git to show you the content that is in conflict.
 1. Remove the changes made on the master branch by deleting all of the content below the `=======` and above `>>>>>>> master`.
 1. Next, remove the merge conflict markers by deleting the following lines:
+
+       <<<<<<< update-config
+       =======
+ >>>>>>> master
+
+1. **Optional:** If you'd like, you can edit the `_config.yml` file with your own information. Change any of the lines within the file, even outside of where the markers were. More about this below.
+1. Close the file.
+1. Back in GitHub Desktop, click **Commit merge**.
+1. Push your changes back to the remote by clicking **Push origin**.
+{% else %}
+1. At the bottom of the page in the "This branch has conflicts that must be resolved" section of the Pull Request, click the **Resolve conflicts** button.
+2. Look for the highlighted sections that begins with  `<<<<<<<  update-config` and ends with `>>>>>>> master`. These markers are added by Git to show you the content that is in conflict.
+3. Remove the changes made on the master branch by deleting all of the content below the `=======` and above `>>>>>>> master`.
+4. Next, remove the merge conflict markers by deleting the following lines:
 
        <<<<<<< update-config
        =======

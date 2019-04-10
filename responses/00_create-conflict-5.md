@@ -22,6 +22,15 @@ In the last activity, you solved a merge conflict that someone else created. Thi
     ```shell
  git push
     ```
+{% elsif preferences.gitTool == 'desktop' %}
+1. Checkout to the `add-education` branch.
+1. Merge `master` into the `add-education` branch.
+1. Open the `_data/education.yml` file in your default editor. 
+1. Modify the content in the `degree:`, `uni:`, `year:`, and `summary:` lines.
+1. Save and close the file.
+2. Back in GitHub Desktop, see that your changes are staged for commit because the box next to the title is checked on the left side. 
+1. Enter a short and descriptive commit message, and click **Commit to add-education**. 
+3. Push your changes back to the remote by clicking **Push origin**.
 {% else %}
 1. Click on the **Files changed** tab in this pull request.
 1. Click the :pencil2: found in the top right-hand corner of the `_data/education.yml` file that had been previously modified.

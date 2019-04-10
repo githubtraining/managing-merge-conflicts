@@ -39,6 +39,15 @@ This time, however, I've made it a bit more complicated.
     ```shell
  git push
     ```
+{% elsif preferences.gitTool == 'desktop' %}
+1. Checkout to the `add-experience` branch by clicking **Current branch**, and selecting `update-config`. 
+2. Merge `master` into the `add-experience` branch by clicking **Current branch**, and selecting **Choose a branch to merge into update-config**. 
+3. Select the `master` branch, and click **Merge master into update-config**.
+4. You'll be prompted about the merge conflict, and asked if you'd like to resolve it in your default editor. Click the button to open the file in your default editor. 
+5. This file has some extra merge commit markers. Select the Interests you would like to list. Remove the others and all the extra conflict markers.
+1. Save and close the file.
+1. Back in GitHub Desktop, click **Commit merge**.
+1. Push your changes back to the remote by clicking **Push origin**.
 {% else %}
 1. Click **Resolve conflicts**.
 1. On the left, you will notice two files listed: `_data/experience.yml` and `_data/interests.yml`. Let's start with `experience.yml`.

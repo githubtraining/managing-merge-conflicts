@@ -10,11 +10,13 @@ To demonstrate, I'll stand in as your colleague :wave:. In this other pull reque
 
 {% if preferences.gitTool == 'cli' %}
 1. Resolve the conflicts locally by checking out to this branch and repeating your previous steps.
+{% elsif preferences.gitTool == 'desktop' %}
+1. Resolve the conflicts locally by checking out to this branch and repeating your previous steps.
 {% else %}
 1. In the "This branch has conflicts that must be resolved" section of the pull request, click **Resolve conflicts**.
 {% endif %}
 
-Because you created both conflicts, feel free to resolve these conflicts as you wish.
+Because you created the conflict, feel free to resolve this conflict as you wish.
 
 <hr>
 <h3 align="center">Return to this pull request for next steps.</h3>
