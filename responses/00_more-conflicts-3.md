@@ -21,9 +21,9 @@ This time, however, I've made it a bit more complicated.
     git merge origin/master
     ```
 1. In Git's response, you'll see two files with conflicts: `_data/experience.yml` and `_data/interests.yml`.
-1. Open `experience.yml` in your text editor.
+1. Open `_data/experience.yml` in your text editor.
 1. Remove the conflict markers and pick your desired content. 
-1. With the merge conflicts resolved and the markers removed in the `experience.yml` file, stage the file:
+1. With the merge conflicts resolved and the markers removed in the `_data/experience.yml` file, stage the file:
     ```shell
     git add _data/experience.yml
     ```
@@ -31,7 +31,7 @@ This time, however, I've made it a bit more complicated.
 1. Remove the conflict markers and pick your desired content. 
 1.  Close the file. Stage it and commit your changes:
     ```shell
-    git add .
+    git add _data/interests.yml
     git commit -m "merge master into add-experience"
     ```
 11. Push your merged branches to GitHub:
@@ -49,10 +49,10 @@ This time, however, I've made it a bit more complicated.
 1. Push your changes back to the remote by clicking **Push origin**.
 {% else %}
 1. Click **Resolve conflicts**.
-1. On the left, you will notice two files listed: `_data/experience.yml` and `_data/interests.yml`. Let's start with `experience.yml`.
+1. On the left, you will notice two files listed: `_data/experience.yml` and `_data/interests.yml`. Let's start with `_data/experience.yml`.
 1. Remove the conflict markers and pick your desired content. 
-1. With the merge conflicts resolved and the markers removed in the `experience.yml` file, click **Mark as resolved**.
-1. GitHub will present the next file with conflicts, `interests.yml`.
+1. With the merge conflicts resolved and the markers removed in the `_data/experience.yml` file, click **Mark as resolved**.
+1. GitHub will present the next file with conflicts, `_data/interests.yml`.
 1. Remove the conflict markers and pick your desired content. 
 1. When you are finished, click **Mark as resolved**.
 1. Click **Commit merge**.
