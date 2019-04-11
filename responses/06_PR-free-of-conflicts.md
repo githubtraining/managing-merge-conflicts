@@ -13,20 +13,20 @@ Great job, @{{ user.username }}, your pull request is free of conflicts. :tada: 
 You can also merge locally:
 1. Checkout to the master branch:
     ```shell
- git checkout master
+    git checkout master
     ```
 1. Ensure the master branch is up to date:
     ```shell
- git pull
+    git pull
     ```
 1. Merge the `{{ branch }}` branch:
     ```shell
- git merge {{ branch }}
+    git merge {{ branch }}
     ```
 1. Enter a commit message, if asked.
 1. Push your merged branches up to GitHub:
     ```shell
- git push
+    git push
     ```
 {% elsif preferences.gitTool == 'desktop' %}
 You can also merge locally:
