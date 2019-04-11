@@ -36,18 +36,18 @@ before:
   - type: createPullRequest
     title: More conflicts
     body: 00_more-conflicts-3.md
-    head: add-education
+    head: add-experience
   - type: createPullRequest
     title: Create your own conflict
     body: 00_create-conflict-5.md
-    head: add-experience
+    head: add-education
 
 steps:
   #step 1 - resolve simple conflict
   - title: Resolve a simple conflict
     description: Resolve your first merge conflict
     event: pull_request.synchronize
-    link: '{{ repoUrl }}/pulls'
+    link: '{{ repoUrl }}/pull/1'
     actions:
       - type: getPullRequest
         waitForMergeable: true

@@ -1,5 +1,3 @@
-## Step 2: Merge the first resolved pull request
-
 You did it, @{{ user.username }}! Nice job resolving that conflict. Most conflicts in your day to day experience should be pretty simple, as in that activity. You may need to discuss the resolution with your peers. If your team is working together and reviewing pull requests, resolving conflicts is easy.
 
 ### What just happened?
@@ -10,11 +8,13 @@ To resolve a conflict, GitHub performs what is known as a *reverse merge*. This 
 
 With a reverse merge, only the `update-config` branch is updated:. This allows you to test the resolved code on your branch before you merge it into `master`. The `master` branch should be treated as production ready, bug-free code.
 
-### :keyboard: Activity: Merge this pull request
+## Step 2: Merge the first resolved pull request
 
 Go ahead and merge this pull request now.
 
 > I have already approved this pull request, so if you still see "Review required" in the merge view, try refreshing the page.
+> 
+### :keyboard: Activity: Merge this pull request
 
 1. Click **Merge pull request** below.
 1. Click **Confirm merge**.
@@ -24,20 +24,20 @@ Go ahead and merge this pull request now.
 You can also merge locally:
 1. Checkout to the master branch:
     ```shell
- git checkout master
+    git checkout master
     ```
 1. Ensure the master branch is up to date:
     ```shell
- git pull
+    git pull
     ```
 1. Merge the `{{ branch }}` branch:
     ```shell
- git merge {{ branch }}
+    git merge {{ branch }}
     ```
 1. Enter a commit message, if asked.
 1. Push your merged branches up to GitHub:
     ```shell
- git push
+    git push
     ```
 {% elsif preferences.gitTool == 'desktop' %}
 You can also merge locally:
