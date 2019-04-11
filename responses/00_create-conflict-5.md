@@ -9,18 +9,18 @@ In the last activity, you solved a merge conflict that someone else created. Thi
 {% if preferences.gitTool == 'cli' %}
 1. Check out to this branch:
     ```shell
- git checkout add-education
+    git checkout add-education
     ```
 1. Open `_data/education.yml` in your text editor.
 1. Modify the content in the `degree:`, `uni:`, `year:`, and `summary:` lines.
 1. Stage and commit the changes:
     ```shell
- git add _data/education.yml
- git commit -m "<YOUR-MESSAGE>"
+    git add _data/education.yml
+    git commit -m "<YOUR-MESSAGE>"
     ```
 1. Push your changes to GitHub:
     ```shell
- git push
+    git push
     ```
 {% elsif preferences.gitTool == 'desktop' %}
 1. Checkout to the `add-education` branch.
