@@ -43,8 +43,8 @@ before:
     head: add-education
 
 steps:
-  #step 1 - resolve simple conflict
-  - title: Resolve a simple conflict
+  #step 1 - resolve conflict
+  - title: Resolve a conflict
     description: Resolve your first merge conflict
     event: pull_request.synchronize
     link: '{{ repoUrl }}/pull/1'
