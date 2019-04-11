@@ -6,7 +6,7 @@ Resolving a conflict doesn't automatically merge the Pull Request in GitHub. Ins
 
 To resolve a conflict, GitHub performs what is known as a *reverse merge*. This means that the changes from the `master` branch were  merged into your `update-config` branch. 
 
-With a reverse merge, only the `update-config` branch is updated:. This allows you to test the resolved code on your branch before you merge it into `master`. The `master` branch should be treated as production ready, bug-free code.
+With a reverse merge, only the `update-config` branch is updated. This allows you to test the resolved code on your branch before you merge it into `master`. The `master` branch should be treated as production ready, bug-free code.
 
 ## Step 2: Merge the first resolved pull request
 
