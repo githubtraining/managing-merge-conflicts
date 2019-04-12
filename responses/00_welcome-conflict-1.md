@@ -6,6 +6,8 @@ In this course, you'll learn why merge conflicts happen and solve a few of them.
 
 As an added bonus, the project we are using for this course is a resume hosted on [GitHub Pages](https://pages.github.com/)! So, if you want to keep working after you complete this course, please feel free!
 
+Before starting this course, we recommend completing the [Introduction to GitHub Learning Lab](https://lab.github.com/githubtraining/introduction-to-github) first. 
+
 > Note: You may notice that some branches and pull requests already exist. We'll be using them in later activities in this course.
 
 ### How merge conflicts happen
