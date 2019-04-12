@@ -58,7 +58,7 @@ Let's help our friends resolve this conflict.
        =======
         >>>>>>> master
 
-1. Close the file. Stage and commit your changes:
+1. Save and close the file. Stage and commit your changes:
     ```shell
     git add .
     git commit -m "merge master into update-config"
@@ -83,7 +83,7 @@ Let's help our friends resolve this conflict.
        =======
         >>>>>> master
 
-1. Close the file.
+1. Save and close the file.
 1. Back in GitHub Desktop, click **Commit merge**.
 1. Push your changes back to the remote by clicking **Push origin**.
 {% else %}

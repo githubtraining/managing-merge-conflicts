@@ -23,7 +23,7 @@ tags:
 before:
   - type: updateBranchProtection
   - type: createPullRequest
-    title: "Welcome! Let's resolve a conflict."
+    title: "Welcome! Let's resolve a conflict"
     body: 00_welcome-conflict-1.md
     head: update-config
     data:

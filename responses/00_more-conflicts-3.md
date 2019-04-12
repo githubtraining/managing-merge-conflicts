@@ -42,9 +42,9 @@ This time, however, I've made it a bit more complicated.
 1. Checkout to the `add-experience` branch by clicking **Current branch**, and selecting `add-experience`. 
 1. Merge `master` into the `add-experience` branch by clicking **Current branch**, and selecting **Choose a branch to merge into update-config**. 
 1. Select the `master` branch, and click **Merge master into update-config**.
-1. You'll be prompted about the merge conflict, and asked if you'd like to resolve it in your default editor. Click the button to open the file in your default editor. 
-1. Remove the conflict markers and pick your desired content. 
-1. Save and close the file.
+1. You'll be prompted about the merge conflict, and asked if you'd like to resolve it in your default editor. Click the button to open each file in your default editor. 
+1. Remove the conflict markers and pick your desired content for each file. 
+1. Save and close the files.
 1. Back in GitHub Desktop, click **Commit merge**.
 1. Push your changes back to the remote by clicking **Push origin**.
 {% else %}
