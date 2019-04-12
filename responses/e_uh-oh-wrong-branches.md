@@ -1,3 +1,0 @@
-Uh oh! This pull request isn't between the correct branches. Please check the issue with the instructions, and make sure that you've been working on the correct branch and that you've selected the correct branches while creating the pull request. 
-
-If you would like assistance troubleshooting the issue you are encountering, create a post on the [GitHub Community]({{ communityBoard }}) board. You might also want to search for your issue to see if other people have resolved it in the past.
