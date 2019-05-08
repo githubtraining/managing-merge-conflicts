@@ -209,7 +209,7 @@ steps:
         title: Next steps
         body: 07_next-steps.md
         data:
-          url: 'https://%user.username%.github.io/%payload.repository.name%'
+          url: 'https://%user.username%.github.io/%payload.repository.name%' #TODO FIX URL FOR GHES
       - type: respond
         with: 07_congrats.md
         data:
