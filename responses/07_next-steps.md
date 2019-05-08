@@ -57,7 +57,7 @@ Here are some instructions you can use to keep working on your resumé:
  
   When you are happy with your resume, you will need to publish it with GitHub Pages. This resume is ready for GitHub Pages, you just need to turn it on. Follow these steps to enable GitHub Pages when you are ready to publish your resume:
 
- 1. Click on the [**Settings**](https://github.com/{{ user.username }}/{{ repo }}/settings) tab.
+ 1. Click on the [**Settings**]({{ repoUrl }}/settings) tab.
  1. Scroll to the "GitHub Pages" section.
  1. In the "Source" drop-down, select **master branch**.
  1. Click **Save**.
