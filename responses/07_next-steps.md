@@ -68,7 +68,7 @@ Your GitHub Pages resumé site will be live very shortly. Check it out here:
 {% if GHE_HOST %}
   https://pages.{{ GHE_HOST }}/{{ user.login }}/{{ registration.repositoryName }}
 {% else %}
-  https://{{ user.login }}.github.io/{{ registration.repositoryName }}
+  https://{{ user.login }}.github.io/{{ repo }}
 {% endif %}
  
  <hr>

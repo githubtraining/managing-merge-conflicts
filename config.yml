@@ -208,6 +208,8 @@ steps:
         action_id: issue
         title: Next steps
         body: 07_next-steps.md
+        data:
+          repo: '%payload.repository%'
       - type: respond
         with: 07_congrats.md
         data:
