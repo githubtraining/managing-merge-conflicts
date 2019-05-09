@@ -204,17 +204,10 @@ steps:
           with: e_error.md
       - type: gate
         left: '%payload.pull_request.merged%'
-      - type: octokit
-        method: repos.getPages
-        owner: '%payload.repository.owner.login%'
-        repo: '%payload.repository.name%'
-        action_id: pagesUrl
       - type: createIssue
         action_id: issue
         title: Next steps
         body: 07_next-steps.md
-        data:
-          url: '%actions.pagesUrl.data.html_url%'
       - type: respond
         with: 07_congrats.md
         data:
