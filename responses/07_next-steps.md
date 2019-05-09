@@ -63,7 +63,13 @@ Here are some instructions you can use to keep working on your resumé:
  1. Click **Save**.
  1. :construction: Warning! :construction: Make sure you don't see any [errors after you select save](https://user-images.githubusercontent.com/13326548/36769372-bc9b43d4-1bf8-11e8-8050-2b08cf8d146b.png). If you do, your page won't build correctly and this step will be incomplete.
  
-Your GitHub Pages resumé site will be live very shortly. [Click here to check it out.]( {{url}} )
+Your GitHub Pages resumé site will be live very shortly. Check it out here:
+
+{% if GHE_HOST %}
+  https://pages.{{ GHE_HOST }}/{{ user.login }}/{{ registration.repositoryName }}
+{% else %}
+  https://{{ user.login }}.github.io/{{ registration.repositoryName }}
+{% endif %}
  
  <hr>
 </details>
