@@ -209,7 +209,7 @@ steps:
         title: Next steps
         body: 07_next-steps.md
         data:
-          repo: "%payload.repository%"
+          repo: '%payload.repository.name%'
       - type: respond
         with: 07_congrats.md
         data:
