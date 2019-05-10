@@ -66,7 +66,7 @@ Here are some instructions you can use to keep working on your resumé:
 Your GitHub Pages resumé site will be live very shortly. Check it out here:
 
 {% if GHE_HOST %}
-  https://pages.{{ GHE_HOST }}/{{ user.login }}/{{ registration.repositoryName }}
+  https://pages.{{ GHE_HOST }}/{{ user.login }}/{{ repo }}
 {% else %}
   https://{{ user.login }}.github.io/{{ repo }}
 {% endif %}
