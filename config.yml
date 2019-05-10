@@ -49,6 +49,7 @@ steps:
     event: pull_request.synchronize
     link: "{{ repoUrl }}/pull/1"
     actions:
+      - type: removeBranchProtection
       - type: getPullRequest
         waitForMergeable: true
         action_id: pr
@@ -57,7 +58,6 @@ steps:
         else:
           type: respond
           with: e_error.md
-      - type: removeBranchProtection
       - type: respond
         with: 01_success.md
         data:
