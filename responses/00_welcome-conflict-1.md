@@ -1,4 +1,4 @@
-## Welcome to Managing Merge Conflicts :tada:
+# Welcome to Managing Merge Conflicts :tada:
 
 Hello, and welcome! If you're here to learn about and practice resolving merge conflicts, you're in the right place.
 
