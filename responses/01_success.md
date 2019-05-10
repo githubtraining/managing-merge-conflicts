@@ -1,4 +1,4 @@
-You did it, @{{ user.username }}! Nice job resolving that conflict. Most conflicts in your day to day experience should be pretty simple, as in that activity. You may need to discuss the resolution with your peers. If your team is working together and reviewing pull requests, resolving conflicts is easy.
+You did it, @{{ user.username }}! Nice job resolving the conflict. Most conflicts in your day to day experience should be pretty simple, as in that activity. You may need to discuss the resolution with your peers. If your team is working together and reviewing pull requests, resolving conflicts is easy.
 
 ### What just happened?
 
