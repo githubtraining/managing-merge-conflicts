@@ -4,7 +4,7 @@ Hello, and welcome! If you're here to learn about and practice resolving merge c
 
 In this course, you'll learn why merge conflicts happen and solve a few of them. The merge conflicts in this course are simple enough to solve from GitHub.com. But, if you'd prefer, you can solve them using the command line or other local tools.
 
-As an added bonus, the project we are using for this course is a resume hosted on [GitHub Pages](https://pages.github.com/)! So, if you want to keep working after you complete this course, please feel free!
+As an added bonus, the project we are using for this course is a resume hosted on [GitHub Pages](https://help.github.com/en/categories/github-pages-basics)! So, if you want to keep working after you complete this course, please feel free!
 
 Before starting this course, we recommend completing the [Introduction to GitHub Learning Lab](https://lab.github.com/githubtraining/introduction-to-github) first. 
 
