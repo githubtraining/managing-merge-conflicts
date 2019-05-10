@@ -33,6 +33,7 @@ Let's help our friends resolve this conflict.
 ### :keyboard: Activity: Resolving your first merge conflict
 
 {% if preferences.gitTool == 'cli' %}
+
 1. Open your preferred command line interface, which we'll call your shell from now on.
 1. Clone this repository:
       ```shell
@@ -69,7 +70,9 @@ Let's help our friends resolve this conflict.
     ```shell
     git push
     ```
+
 {% elsif preferences.gitTool == 'desktop' %}
+
 1. First, make sure you have [GitHub Desktop](https://desktop.github.com/) installed and [configured](https://help.github.com/en/desktop/getting-started-with-github-desktop/authenticating-to-github). 
 1. On the `code` tab of this repository, click the green **Clone or download** button. Click **Open in Desktop**. 
 1. In GitHub Desktop, confirm the blue **Clone** button in the pop up window. 
@@ -88,18 +91,21 @@ Let's help our friends resolve this conflict.
 1. Save and close the file.
 1. Back in GitHub Desktop, click **Commit merge**.
 1. Push your changes back to the remote by clicking **Push origin**.
+
 {% else %}
+
 1. At the bottom of the page in the "This branch has conflicts that must be resolved" section of the Pull Request, click the **Resolve conflicts** button.
-1. Look for the highlighted sections that begins with  `<<<<<<<  update-config` and ends with `>>>>>>> master`. These markers are added by Git to show you the content that is in conflict.
-1. Remove the changes made on the master branch by deleting all of the content below the `=======` and above `>>>>>>> master`.
-1. Next, remove the merge conflict markers by deleting the following lines:
+2. Look for the highlighted sections that begins with  `<<<<<<<  update-config` and ends with `>>>>>>> master`. These markers are added by Git to show you the content that is in conflict.
+3. Remove the changes made on the master branch by deleting all of the content below the `=======` and above `>>>>>>> master`.
+4. Next, remove the merge conflict markers by deleting the following lines:
 
        <<<<<<< update-config
        =======
         >>>>>>> master
 
-1. With the merge conflict markers removed, click **Mark as resolved**.
-1. Finally, click **Commit merge**.
+5. With the merge conflict markers removed, click **Mark as resolved**.
+6. Finally, click **Commit merge**.
+
 {% endif %}
 
 > Sometimes, the best way to resolve a merge conflict is to add content that's from both branches, or even something that isn't on either! This is why Git needs a human to look at the code and make the proper fixes.
