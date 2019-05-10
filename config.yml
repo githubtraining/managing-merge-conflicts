@@ -46,7 +46,7 @@ steps:
   #step 1 - resolve conflict
   - title: Resolve a conflict
     description: Resolve your first merge conflict
-    event: push
+    event: pull_request.synchronize
     link: "{{ repoUrl }}/pull/1"
     actions:
       - type: removeBranchProtection
