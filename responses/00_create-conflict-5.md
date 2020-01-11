@@ -33,7 +33,8 @@ In the last activity, you solved a merge conflict that someone else created. Thi
 3. Push your changes back to the remote by clicking **Push origin**.
 {% else %}
 1. Click on the **Files changed** tab in this pull request.
-1. Click the :pencil2: found in the top right-hand corner of the `_data/education.yml` file that had been previously modified.
+1. Click ![octicon-kebab-horizontal] in the top right-hand corner of the `_data/education.yml` file that had been previously modified.
+1. Click **Edit file** to open the file editor.
 1. Modify the content in the `degree:`, `uni:`, `year:`, and `summary:` lines.
 1. Scroll to the bottom of the page and enter a commit message for your change.
 1. Click the **Commit changes** button, making sure the "Commit directly to the **add-education** branch" option is selected.
@@ -41,3 +42,4 @@ In the last activity, you solved a merge conflict that someone else created. Thi
 <hr>
 <h3 align="center">Watch below for my response.</h3>
 
+[octicon-kebab-horizontal]: https://unpkg.com/octicons/build/svg/kebab-horizontal.svg
