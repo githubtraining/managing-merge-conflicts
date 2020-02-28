@@ -1,5 +1,4 @@
 title: Managing merge conflicts
-tagline: Your interactive guide to resolving merge conflicts
 description: Merge conflicts are a normal part of working in Git. Learn why they happen and how to resolve them with ease.
 template:
   name: merge-conflicts
