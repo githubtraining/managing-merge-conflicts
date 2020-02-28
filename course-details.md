@@ -21,7 +21,7 @@ And when you're done you'll be able to:
 - Completed [resume](https://githubtraining.github.io/merge-conflicts-demo/) deployed to GitHub Pages.
 
 ## Prerequisites
-We recommend taking the [Introduction to GitHub](https://lab.github.com/githubtraining/introduction-to-github) Learning Lab prior to this course. 
+We recommend taking [Introduction to GitHub](https://lab.github.com/githubtraining/introduction-to-github) prior to this course. 
 
 ## Projects used
 This makes use of the following open source projects. Consider exploring these repos and maybe even making contributions!
