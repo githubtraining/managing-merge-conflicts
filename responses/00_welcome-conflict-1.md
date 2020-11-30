@@ -20,9 +20,9 @@ This can be intimidating, but have no fear, Git knows how to handle this! It onl
 
 You may merge a lot of pull requests before you encounter your first merge conflict. That’s because Git is smart when it comes to merging. Unless you're paying close attention to other branches, you won't know about conflicts until you create a pull request.
 
-This branch is a great example. In this scenario, two of our friends have been working in this repository. They both created branches, made changes to the `_config.yml` file, and opened pull requests. One pull request was merged to `master` without problems, but now the other pull request has a conflict.
+This branch is a great example. In this scenario, two of our friends have been working in this repository. They both created branches, made changes to the `_config.yml` file, and opened pull requests. One pull request was merged to `main` without problems, but now the other pull request has a conflict.
 
-The history of `master` and this branch look something like this:
+The history of `main` and this branch look something like this:
 
 ![deviated branches](https://user-images.githubusercontent.com/13326548/36703493-b8f4d5ee-1b10-11e8-9f95-4ec9993fe704.png)
 
@@ -48,23 +48,23 @@ Let's help our friends resolve this conflict.
     git checkout update-config
     git pull
     ```
-1. Merge the `master` branch into the `update-config` branch. To ensure that you're working with an up to date copy of `master`, we'll use its remote tracking branch:
+1. Merge the `main` branch into the `update-config` branch. To ensure that you're working with an up to date copy of `main`, we'll use its remote tracking branch:
     ```shell
-    git merge origin/master
+    git merge origin/main
     ```
 1. In Git's response, you'll see the file with the conflict. Open it in your text editor.
-1. Look for the marked hunks that begin with  `<<<<<<<  update-config` and ends with `>>>>>>> master`. These markers are added by Git to show you the content that is in conflict.
-1. Remove the changes made on the master branch by deleting all of the content below the `=======` and above `>>>>>>> master`.
+1. Look for the marked hunks that begin with  `<<<<<<<  update-config` and ends with `>>>>>>> main`. These markers are added by Git to show you the content that is in conflict.
+1. Remove the changes made on the main branch by deleting all of the content below the `=======` and above `>>>>>>> main`.
 1. Next, remove the merge conflict markers by deleting the following lines:
 
        <<<<<<< update-config
        =======
-        >>>>>>> master
+        >>>>>>> main
 
 1. Save and close the file. Stage and commit your changes:
     ```shell
     git add .
-    git commit -m "merge master into update-config"
+    git commit -m "merge main into update-config"
     ```
 1. Push your merged branches to GitHub:
     ```shell
@@ -77,16 +77,16 @@ Let's help our friends resolve this conflict.
 1. On the `code` tab of this repository, click the green **Clone or download** button. Click **Open in Desktop**. 
 1. In GitHub Desktop, confirm the blue **Clone** button in the pop up window. 
 1. Checkout to the `update-config` branch by clicking **Current branch**, and selecting `update-config`. 
-1. Merge `master` into the `update-config` branch by clicking **Current branch**, and selecting **Choose a branch to merge into update-config**. 
-1. Select the `master` branch, and click **Merge master into update-config**.
+1. Merge `main` into the `update-config` branch by clicking **Current branch**, and selecting **Choose a branch to merge into update-config**. 
+1. Select the `main` branch, and click **Merge main into update-config**.
 1. You'll be prompted about the merge conflict, and asked if you'd like to resolve it in your default editor. Click the button to open the file in your default editor. 
-1. Look for the marked hunks that begin with  `<<<<<<<  update-config` and ends with `>>>>>>> master`. These markers are added by Git to show you the content that is in conflict.
-1. Remove the changes made on the master branch by deleting all of the content below the `=======` and above `>>>>>>> master`.
+1. Look for the marked hunks that begin with  `<<<<<<<  update-config` and ends with `>>>>>>> main`. These markers are added by Git to show you the content that is in conflict.
+1. Remove the changes made on the main branch by deleting all of the content below the `=======` and above `>>>>>>> main`.
 1. Next, remove the merge conflict markers by deleting the following lines:
 
        <<<<<<< update-config
        =======
-        >>>>>> master
+        >>>>>> main
 
 1. Save and close the file.
 1. Back in GitHub Desktop, click **Commit merge**.
@@ -95,13 +95,13 @@ Let's help our friends resolve this conflict.
 {% else %}
 
 1. At the bottom of the page in the "This branch has conflicts that must be resolved" section of the Pull Request, click the **Resolve conflicts** button.
-2. Look for the highlighted sections that begins with  `<<<<<<<  update-config` and ends with `>>>>>>> master`. These markers are added by Git to show you the content that is in conflict.
-3. Remove the changes made on the master branch by deleting all of the content below the `=======` and above `>>>>>>> master`.
+2. Look for the highlighted sections that begins with  `<<<<<<<  update-config` and ends with `>>>>>>> main`. These markers are added by Git to show you the content that is in conflict.
+3. Remove the changes made on the main branch by deleting all of the content below the `=======` and above `>>>>>>> main`.
 4. Next, remove the merge conflict markers by deleting the following lines:
 
        <<<<<<< update-config
        =======
-        >>>>>>> master
+        >>>>>>> main
 
 5. With the merge conflict markers removed, click **Mark as resolved**.
 6. Finally, click **Commit merge**.
