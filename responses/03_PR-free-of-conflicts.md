@@ -12,11 +12,11 @@ Go ahead and merge this pull request now.
 
 {% if preferences.gitTool == 'cli' %}
 You can also merge locally:
-1. Checkout to the master branch:
+1. Checkout to the main branch:
     ```shell
-    git checkout master
+    git checkout main
     ```
-1. Ensure the master branch is up to date:
+1. Ensure the main branch is up to date:
     ```shell
     git pull
     ```
@@ -31,10 +31,10 @@ You can also merge locally:
     ```
 {% elsif preferences.gitTool == 'desktop' %}
 You can also merge locally:
-1. Checkout to the `master` branch by clicking **Current branch**, and selecting `master`.
+1. Checkout to the `main` branch by clicking **Current branch**, and selecting `main`.
 1. Ensure the branch is up to date by clicking **Fetch origin**. 
-2. Merge `{{ branch}} ` into the `master` branch by clicking **Current branch**, and selecting **Choose a branch to merge into master**. 
-3. Select the `{{ branch }}` branch, and click **Merge {{ branch }} into master**.
+2. Merge `{{ branch}} ` into the `main` branch by clicking **Current branch**, and selecting **Choose a branch to merge into main**. 
+3. Select the `{{ branch }}` branch, and click **Merge {{ branch }} into main**.
 4. Push your changes back to the remote by clicking **Push origin**.
 {% endif %}
 

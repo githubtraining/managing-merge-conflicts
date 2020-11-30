@@ -11,11 +11,11 @@ Great job, @{{ user.username }}, your pull request is free of conflicts. :tada: 
 
 {% if preferences.gitTool == 'cli' %}
 You can also merge locally:
-1. Checkout to the master branch:
+1. Checkout to the main branch:
     ```shell
-    git checkout master
+    git checkout main
     ```
-1. Ensure the master branch is up to date:
+1. Ensure the main branch is up to date:
     ```shell
     git pull
     ```
@@ -30,10 +30,10 @@ You can also merge locally:
     ```
 {% elsif preferences.gitTool == 'desktop' %}
 You can also merge locally:
-1. Checkout to the `master` branch.
+1. Checkout to the `main` branch.
 2. Ensure the branch is up to date by clicking **Fetch origin**. 
-3. Merge `{{ branch}} ` into the `master` branch by clicking **Current branch**, and selecting **Choose a branch to merge into master**. 
-4. Select the `{{ branch }}` branch, and click **Merge {{ branch }} into master**.
+3. Merge `{{ branch}} ` into the `main` branch by clicking **Current branch**, and selecting **Choose a branch to merge into main**. 
+4. Select the `{{ branch }}` branch, and click **Merge {{ branch }} into main**.
 5. Push your changes back to the remote by clicking **Push origin**.
 {% endif %}
 

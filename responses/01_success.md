@@ -4,9 +4,9 @@ You did it, @{{ user.username }}! Nice job resolving the conflict. Most conflict
 
 Resolving a conflict doesn't automatically merge the Pull Request in GitHub. Instead, it stores the resolution of the conflict in a merge commit and allows you and your team to keep working.
 
-To resolve a conflict, GitHub performs what is known as a *reverse merge*. This means that the changes from the `master` branch were  merged into your `update-config` branch. 
+To resolve a conflict, GitHub performs what is known as a *reverse merge*. This means that the changes from the `main` branch were  merged into your `update-config` branch. 
 
-With a reverse merge, only the `update-config` branch is updated. This allows you to test the resolved code on your branch before you merge it into `master`. The `master` branch should be treated as production ready, bug-free code.
+With a reverse merge, only the `update-config` branch is updated. This allows you to test the resolved code on your branch before you merge it into `main`. The `main` branch should be treated as production ready, bug-free code.
 
 ## Step 2: Merge the first resolved pull request
 
@@ -22,11 +22,11 @@ Go ahead and merge this pull request now.
 
 {% if preferences.gitTool == 'cli' %}
 You can also merge locally:
-1. Checkout to the master branch:
+1. Checkout to the main branch:
     ```shell
-    git checkout master
+    git checkout main
     ```
-1. Ensure the master branch is up to date:
+1. Ensure the main branch is up to date:
     ```shell
     git pull
     ```
@@ -41,10 +41,10 @@ You can also merge locally:
     ```
 {% elsif preferences.gitTool == 'desktop' %}
 You can also merge locally:
-1. Checkout to the `master` branch by clicking **Current branch**, and selecting `master`.
+1. Checkout to the `main` branch by clicking **Current branch**, and selecting `main`.
 1. Ensure the branch is up to date by clicking **Fetch origin**. 
-2. Merge `{{ branch}} ` into the `master` branch by clicking **Current branch**, and selecting **Choose a branch to merge into master**. 
-3. Select the `{{ branch }}` branch, and click **Merge {{ branch }} into master**.
+2. Merge `{{ branch}} ` into the `main` branch by clicking **Current branch**, and selecting **Choose a branch to merge into main**. 
+3. Select the `{{ branch }}` branch, and click **Merge {{ branch }} into main**.
 4. Push your changes back to the remote by clicking **Push origin**.
 {% endif %}
 
