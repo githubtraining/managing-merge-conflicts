@@ -1,21 +1,20 @@
 title: Managing merge conflicts
-tagline: Your interactive guide to resolving merge conflicts
 description: Merge conflicts are a normal part of working in Git. Learn why they happen and how to resolve them with ease.
 template:
   name: merge-conflicts
   repo: merge-conflict-template-repo
 preferences:
-  - type: radio
-    name: gitTool
-    label: Preferred Git tool
-    description: Learn right from the web UI, or using your chosen tool
-    options:
-      - label: Use the GitHub.com web interface
-        value: dotcom
-      - label: Use the command line
-        value: cli
-      - label: Use GitHub Desktop
-        value: desktop
+- type: radio
+  name: gitTool
+  label: Preferred Git tool
+  description: Learn right from the web UI, or using your chosen tool
+  options:
+    - label: Use the GitHub.com web interface
+      value: dotcom
+    - label: Use the command line
+      value: cli
+    - label: Use GitHub Desktop
+      value: desktop
 tags:
   - Git
   - Merge conflicts
